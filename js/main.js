@@ -10,10 +10,56 @@ document.addEventListener('DOMContentLoaded', function() {
         navMenu.classList.toggle('active');
     });
 
+    // Dropdown Menu Functionality
+    const dropdownItems = document.querySelectorAll('.nav-item.dropdown');
+    
+    dropdownItems.forEach(dropdown => {
+        const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            dropdownToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdown.classList.toggle('mobile-open');
+            });
+        }
+        
+        // Desktop hover functionality is handled by CSS
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('mobile-open');
+            }
+        });
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            // Remove mobile-specific classes on desktop
+            dropdownItems.forEach(dropdown => {
+                dropdown.classList.remove('mobile-open');
+            });
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+    });
+
     // Close mobile menu when clicking on a link
     document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+        if (!n.classList.contains('dropdown-toggle')) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    }));
+
+    // Close mobile menu when clicking on dropdown links
+    document.querySelectorAll('.dropdown-link').forEach(n => n.addEventListener('click', () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
+        dropdownItems.forEach(dropdown => {
+            dropdown.classList.remove('mobile-open');
+        });
     }));
 
     // Smooth scrolling for anchor links
