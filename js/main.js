@@ -176,8 +176,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Performance optimization - preload critical resources
     function preloadCriticalResources() {
         const criticalImages = [
-            'images/hero-lake-texoma-rv-park.jpg',
-            'images/rv-sites-lake-texoma.jpg'
+            'media/images/lake-texoma-aerial.jpg',
+            'media/images/camppointe-office.jpg'
         ];
 
         criticalImages.forEach(src => {
