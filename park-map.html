@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park Map | CampPointe Lake Texoma RV Park</title>
+    <meta name="description" content="Interactive park map of CampPointe Lake Texoma RV Park. View RV site locations, amenities, lake access, and facilities layout for easy navigation.">
+    <meta name="keywords" content="RV park map Lake Texoma, CampPointe site map, RV site layout, park facilities map, Lake Texoma RV park layout">
+    <link rel="canonical" href="https://balkarsinghkang.github.io/camppointe_web/park-map.html">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <h1>CampPointe</h1>
+                        <p class="logo-tagline">Lake Texoma RV Park</p>
+                    </a>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="rates.html" class="nav-link dropdown-toggle">RV Sites & Rates</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="rates.html#nightly" class="dropdown-link">Nightly Stays</a></li>
+                            <li><a href="rates.html#weekly" class="dropdown-link">Weekly Stays</a></li>
+                            <li><a href="rates.html#monthly" class="dropdown-link">Monthly Stays</a></li>
+                            <li><a href="park-map.html" class="dropdown-link active">Park Map</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="amenities.html" class="nav-link">Amenities</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="things-to-do.html" class="nav-link dropdown-toggle">Things To Do</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="things-to-do.html#attractions" class="dropdown-link">Key Attractions</a></li>
+                            <li><a href="things-to-do.html#happenings" class="dropdown-link">Happenings</a></li>
+                            <li><a href="things-to-do.html#businesses" class="dropdown-link">Nearby Businesses</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="gallery.html" class="nav-link">Gallery</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="about.html" class="nav-link dropdown-toggle">About</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="policies.html" class="dropdown-link">Rules & Regulations</a></li>
+                            <li><a href="faq.html" class="dropdown-link">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="blog.html" class="nav-link dropdown-toggle">Blog</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="blog.html#lake-texoma-guide" class="dropdown-link">Lake Texoma Guide</a></li>
+                            <li><a href="blog.html#long-term-stays" class="dropdown-link">Long-Term Stays</a></li>
+                            <li><a href="blog.html#rv-tips" class="dropdown-link">RV Tips</a></li>
+                            <li><a href="blog.html#park-updates" class="dropdown-link">Park Updates</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="location.html" class="nav-link dropdown-toggle">Location</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="location.html#getting-here" class="dropdown-link">Getting Here</a></li>
+                            <li><a href="location.html#area-info" class="dropdown-link">Area Information</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="nav-cta">
+                    <a href="tel:940-277-3435" class="phone-number">940-277-3435</a>
+                    <a href="https://app.fireflyreservations.com/reserve/property/camppointervpark" class="btn-primary cta-book-now" target="_blank" rel="noopener">Book Now</a>
+                </div>
+
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1>Park Map & Layout</h1>
+                <p class="page-subtitle">Navigate CampPointe Lake Texoma RV Park with ease</p>
+            </div>
+        </section>
+
+        <!-- Map Controls -->
+        <section class="map-controls">
+            <div class="container">
+                <div class="map-options">
+                    <div class="view-toggles">
+                        <button class="toggle-btn active" data-view="overview">Park Overview</button>
+                        <button class="toggle-btn" data-view="sites">RV Sites</button>
+                        <button class="toggle-btn" data-view="amenities">Amenities</button>
+                        <button class="toggle-btn" data-view="lake">Lake Access</button>
+                    </div>
+                    <div class="map-legend">
+                        <h4>Map Legend</h4>
+                        <div class="legend-items">
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: var(--primary-color);"></span>
+                                <span>RV Sites</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: var(--secondary-color);"></span>
+                                <span>Amenities</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: var(--accent-color);"></span>
+                                <span>Lake Access</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background: #28a745;"></span>
+                                <span>Roads & Paths</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Map Section -->
+        <section class="interactive-map">
+            <div class="container">
+                <div class="map-container">
+                    <div class="park-map" id="parkMap">
+                        <!-- Map will be dynamically generated -->
+                        <div class="map-placeholder">
+                            <div class="map-content">
+                                <h3>Interactive Park Map</h3>
+                                <p>Detailed park map coming soon</p>
+                                <p>For now, please see the facility overview below</p>
+                                <small>Call for detailed site information: <a href="tel:940-277-3435">940-277-3435</a></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Park Layout Overview -->
+        <section class="park-overview">
+            <div class="container">
+                <h2 class="section-title">Park Layout Overview</h2>
+                <div class="layout-grid">
+                    <div class="layout-section">
+                        <div class="section-header">
+                            <h3>🏠 RV Sites</h3>
+                            <span class="site-count">50+ Sites Available</span>
+                        </div>
+                        <div class="section-details">
+                            <h4>Site Types:</h4>
+                            <ul>
+                                <li><strong>Premium Lakefront:</strong> Direct lake views, 50 amp, full hookups</li>
+                                <li><strong>Standard Full Hookup:</strong> 50/30 amp, water, sewer, cable ready</li>
+                                <li><strong>Back-in Sites:</strong> 30-40 feet, easy access, level pads</li>
+                                <li><strong>Pull-through Sites:</strong> 35-45 feet, convenient for large RVs</li>
+                            </ul>
+                            
+                            <h4>Site Features:</h4>
+                            <ul>
+                                <li>Level concrete pads</li>
+                                <li>Picnic tables at select sites</li>
+                                <li>Fire rings available</li>
+                                <li>Additional vehicle parking</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="layout-section">
+                        <div class="section-header">
+                            <h3>🏢 Main Facilities</h3>
+                            <span class="facility-count">Central Location</span>
+                        </div>
+                        <div class="section-details">
+                            <h4>Office & Check-in:</h4>
+                            <ul>
+                                <li>Registration and information</li>
+                                <li>Camp store supplies</li>
+                                <li>WiFi password distribution</li>
+                                <li>Local area information</li>
+                            </ul>
+                            
+                            <h4>Bathhouse Complex:</h4>
+                            <ul>
+                                <li>Men's and women's facilities</li>
+                                <li>Private shower stalls</li>
+                                <li>ADA accessible</li>
+                                <li>Climate controlled</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="layout-section">
+                        <div class="section-header">
+                            <h3>🌊 Lake Access</h3>
+                            <span class="access-type">Direct Access</span>
+                        </div>
+                        <div class="section-details">
+                            <h4>Water Activities:</h4>
+                            <ul>
+                                <li><strong>Swimming Area:</strong> Designated safe swimming zone</li>
+                                <li><strong>Fishing Access:</strong> Shoreline fishing from multiple points</li>
+                                <li><strong>Boat Access:</strong> Nearby boat ramps and marinas</li>
+                                <li><strong>Beach Area:</strong> Sandy areas for relaxation</li>
+                            </ul>
+                            
+                            <h4>Safety Features:</h4>
+                            <ul>
+                                <li>Clearly marked swimming areas</li>
+                                <li>Emergency contact information posted</li>
+                                <li>Life ring stations</li>
+                                <li>Good lighting for evening activities</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="layout-section">
+                        <div class="section-header">
+                            <h3>🐕 Pet Areas</h3>
+                            <span class="pet-friendly">Pet Friendly</span>
+                        </div>
+                        <div class="section-details">
+                            <h4>Dog Areas:</h4>
+                            <ul>
+                                <li><strong>Off-leash Area:</strong> Fenced dog run for exercise</li>
+                                <li><strong>Walking Trails:</strong> Pet-friendly paths throughout park</li>
+                                <li><strong>Waste Stations:</strong> Cleanup supplies provided</li>
+                                <li><strong>Water Stations:</strong> Fresh water for pets</li>
+                            </ul>
+                            
+                            <h4>Pet Policies:</h4>
+                            <ul>
+                                <li>Leash required in common areas</li>
+                                <li>2 pet maximum per site</li>
+                                <li>Current vaccinations required</li>
+                                <li>Pet fee applies - see rates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Directions & Navigation -->
+        <section class="directions-nav">
+            <div class="container">
+                <h2 class="section-title">Getting Around the Park</h2>
+                <div class="nav-info">
+                    <div class="nav-section">
+                        <h3>🚗 Driving Directions Within Park</h3>
+                        <div class="directions-content">
+                            <h4>From Main Entrance:</h4>
+                            <ol>
+                                <li><strong>Check-in:</strong> Stop at office for registration and site assignment</li>
+                                <li><strong>Main Road:</strong> Follow paved main road through park</li>
+                                <li><strong>Site Numbers:</strong> Look for clearly marked site numbers</li>
+                                <li><strong>Speed Limit:</strong> 5 MPH throughout park for safety</li>
+                            </ol>
+                            
+                            <h4>Site Access Tips:</h4>
+                            <ul>
+                                <li>All roads are paved for easy RV navigation</li>
+                                <li>Pull-through sites accessible from main road</li>
+                                <li>Back-in sites may require slight maneuvering</li>
+                                <li>Staff available to guide large RVs if needed</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="nav-section">
+                        <h3>🚶‍♀️ Walking Paths & Trails</h3>
+                        <div class="directions-content">
+                            <h4>Pedestrian Areas:</h4>
+                            <ul>
+                                <li><strong>Lakefront Trail:</strong> Scenic walk along the shoreline</li>
+                                <li><strong>Main Pathway:</strong> Connects all major facilities</li>
+                                <li><strong>Pet Walking Areas:</strong> Designated paths for dog walking</li>
+                                <li><strong>Exercise Loop:</strong> Circuit path for morning walks/jogs</li>
+                            </ul>
+                            
+                            <h4>Accessibility:</h4>
+                            <ul>
+                                <li>ADA-compliant pathways to main facilities</li>
+                                <li>Well-lit paths for evening safety</li>
+                                <li>Benches and rest areas along trails</li>
+                                <li>Clear signage throughout park</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Information -->
+        <section class="emergency-info">
+            <div class="container">
+                <h2 class="section-title">📋 Park Information & Emergency</h2>
+                <div class="emergency-grid">
+                    <div class="info-card urgent">
+                        <h3>🚨 Emergency Contacts</h3>
+                        <div class="contact-list">
+                            <p><strong>Park Emergency:</strong> <a href="tel:940-277-3435">940-277-3435</a></p>
+                            <p><strong>911 Emergency:</strong> <a href="tel:911">911</a></p>
+                            <p><strong>Poison Control:</strong> <a href="tel:1-800-222-1222">1-800-222-1222</a></p>
+                            <p><strong>Local Hospital:</strong> TMC Bonham (903) 583-8585</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>🏥 Nearest Services</h3>
+                        <div class="services-list">
+                            <p><strong>Hospital:</strong> 15 minutes to Bonham</p>
+                            <p><strong>Grocery Store:</strong> 10 minutes to Gordonville</p>
+                            <p><strong>Gas Station:</strong> 5 minutes on FM 901</p>
+                            <p><strong>RV Service:</strong> 20 minutes to Sherman</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>📍 Park Address</h3>
+                        <div class="address-info">
+                            <p><strong>CampPointe Lake Texoma RV Park</strong></p>
+                            <p>21847 Farm to Market Rd 901</p>
+                            <p>Gordonville, TX 76245</p>
+                            <p><strong>GPS Coordinates:</strong></p>
+                            <p>33.8853° N, 96.8642° W</p>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>⏰ Important Hours</h3>
+                        <div class="hours-info">
+                            <p><strong>Office Hours:</strong></p>
+                            <p>Daily: 8:00 AM - 8:00 PM</p>
+                            <p><strong>Quiet Hours:</strong></p>
+                            <p>10:00 PM - 6:00 AM</p>
+                            <p><strong>Check-in:</strong> 2:00 PM</p>
+                            <p><strong>Check-out:</strong> 12:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Choose Your Perfect Site?</h2>
+                    <p>Use our park map to familiarize yourself with CampPointe, then book your ideal RV site for your Lake Texoma adventure.</p>
+                    <div class="cta-buttons">
+                        <a href="https://app.fireflyreservations.com/reserve/property/camppointervpark" class="btn-primary" target="_blank" rel="noopener">Reserve Your Site</a>
+                        <a href="rates.html" class="btn-secondary">View Rates</a>
+                        <a href="contact.html" class="btn-secondary">Ask Questions</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CampPointe Lake Texoma RV Park</h3>
+                    <p>Where Memories Are Made</p>
+                    <div class="contact-info">
+                        <p>📍 21847 Farm to Market Rd 901<br>Gordonville, TX 76245</p>
+                        <p>📞 <a href="tel:940-277-3435">940-277-3435</a></p>
+                        <p>✉️ <a href="mailto:info@camppointe.com">info@camppointe.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="amenities.html">Amenities</a></li>
+                        <li><a href="rates.html">Rates & Reservations</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>Full Hookup RV Sites</li>
+                        <li>Lake Access</li>
+                        <li>Modern Amenities</li>
+                        <li>Pet Friendly</li>
+                        <li>High-Speed Wi-Fi</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">TripAdvisor</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 CampPointe Lake Texoma RV Park. All rights reserved.</p>
+                <p><a href="policies.html">Privacy Policy</a> | <a href="policies.html">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Map view toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButtons = document.querySelectorAll('.toggle-btn');
+            
+            toggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const view = this.getAttribute('data-view');
+                    
+                    // Update active button
+                    toggleButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update map view (placeholder for future functionality)
+                    console.log('Map view changed to:', view);
+                });
+            });
+        });
+    </script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
