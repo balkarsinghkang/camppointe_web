@@ -1,5 +1,32 @@
 /* CampPointe Lake Texoma RV Park - Main Stylesheet */
 
+/* Image Error Handling for Development */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+img[src*="wixstatic"], 
+img[src*="static.wix"] {
+    display: none;
+}
+
+img[src*="wixstatic"] + *::before,
+img[src*="static.wix"] + *::before {
+    content: "🏕️ Lake Texoma RV Park Image";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 200px;
+    background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 50%, #c3e6cb 100%);
+    color: #1e6b3e;
+    font-weight: 600;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
 /* CSS Custom Properties for Enhanced Theme */
 :root {
     --primary-green: #1e6b3e;
