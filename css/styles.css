@@ -1,5 +1,30 @@
 /* CampPointe Lake Texoma RV Park - Main Stylesheet */
 
+/* CSS Custom Properties for Enhanced Theme */
+:root {
+    --primary-green: #1e6b3e;
+    --primary-green-light: #2d8f5a;
+    --primary-green-lighter: #3ba76c;
+    --primary-green-dark: #0f5a2c;
+    --primary-green-darker: #0a4621;
+    --text-dark: #1a252f;
+    --text-medium: #2c3e50;
+    --text-light: #495057;
+    --background-light: #f8f9fa;
+    --background-lighter: #ffffff;
+    --accent-orange: #ff8c00;
+    --success-green: #28a745;
+    --info-blue: #17a2b8;
+    --warning-yellow: #ffc107;
+    --danger-red: #dc3545;
+    --gradient-primary: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-light) 50%, var(--primary-green-lighter) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--background-lighter) 0%, var(--background-light) 50%, var(--background-lighter) 100%);
+    --gradient-hero: linear-gradient(135deg, #e8f5e8 0%, #d4edda 50%, #c3e6cb 100%);
+    --shadow-light: 0 4px 15px rgba(30, 107, 62, 0.1);
+    --shadow-medium: 0 8px 25px rgba(30, 107, 62, 0.15);
+    --shadow-heavy: 0 15px 35px rgba(30, 107, 62, 0.2);
+}
+
 /* Accessibility - Skip Link */
 .skip-link {
     position: absolute;
@@ -7,7 +32,7 @@
     top: 0;
     z-index: 999999;
     padding: 8px 16px;
-    background: #1e6b3e;
+    background: var(--primary-green);
     color: white;
     text-decoration: none;
     font-weight: 600;
@@ -77,26 +102,47 @@ p {
 }
 
 .btn-primary {
-    background: linear-gradient(45deg, #1e6b3e, #1a5a35);
+    background: linear-gradient(135deg, #1e6b3e 0%, #2d8f5a 50%, #3ba76c 100%);
     color: white;
     border-color: #1e6b3e;
+    box-shadow: 0 4px 15px rgba(30, 107, 62, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(45deg, #1a5a35, #154e2e);
+    background: linear-gradient(135deg, #0f5a2c 0%, #1d7a48 50%, #2b9558 100%);
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(30, 107, 62, 0.4);
+    box-shadow: 0 6px 20px rgba(30, 107, 62, 0.4);
 }
 
 .btn-secondary {
-    background: transparent;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
     color: #1e6b3e;
     border-color: #1e6b3e;
+    box-shadow: 0 4px 15px rgba(30, 107, 62, 0.1);
 }
 
 .btn-secondary:hover {
-    background: #1e6b3e;
+    background: linear-gradient(135deg, #1e6b3e 0%, #2d8f5a 100%);
     color: white;
+    box-shadow: 0 6px 20px rgba(30, 107, 62, 0.3);
+    transform: translateY(-2px);
 }
 
 /* Header Styles */
@@ -186,11 +232,25 @@ p {
     display: flex;
     align-items: center;
     min-height: 80vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 50%, #c3e6cb 100%);
     padding: 4rem 0;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(248, 249, 250, 0.8) 0%, rgba(228, 242, 231, 0.9) 50%, rgba(212, 237, 218, 0.85) 100%);
+    z-index: 1;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 2;
     flex: 1;
     max-width: 1200px;
     margin: 0 auto;
@@ -207,27 +267,32 @@ p {
 
 .hero-title {
     font-size: 3rem;
-    color: #1e6b3e;
+    color: #0d4f28;
     margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+    font-weight: 700;
 }
 
 .hero-subtitle {
     font-size: 2rem;
-    color: #212529;
+    color: #1a252f;
     margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 .hero-description {
     font-size: 1.5rem;
     font-style: italic;
-    color: #495057;
+    color: #2c3e50;
     margin-bottom: 1rem;
+    font-weight: 500;
 }
 
 .hero-tagline {
     font-size: 1.2rem;
-    color: #343a40;
+    color: #1a252f;
     margin-bottom: 2rem;
+    font-weight: 400;
 }
 
 .hero-buttons {
@@ -267,16 +332,36 @@ p {
 }
 
 .feature-card {
-    background: white;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #ffffff 100%);
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 15px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 8px 25px rgba(30, 107, 62, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(30, 107, 62, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(30, 107, 62, 0.05), transparent);
+    transition: left 0.6s ease;
+}
+
+.feature-card:hover::before {
+    left: 100%;
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(30, 107, 62, 0.15);
+    border-color: rgba(30, 107, 62, 0.2);
 }
 
 .feature-icon {
@@ -340,16 +425,36 @@ p {
 }
 
 .testimonial-card {
-    background: white;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 30%, #ffffff 100%);
     padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(30, 107, 62, 0.08);
+    border-left: 4px solid #1e6b3e;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(30, 107, 62, 0.12);
+}
+
+.testimonial-card::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 4rem;
+    color: #1e6b3e;
+    opacity: 0.2;
+    font-family: Georgia, serif;
 }
 
 .stars {
-    color: #ffc107;
+    color: #ff8c00;
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    text-shadow: 0 1px 2px rgba(255, 140, 0, 0.3);
 }
 
 .testimonial-author {
@@ -398,15 +503,50 @@ p {
 
 /* CTA Section */
 .cta {
-    background: linear-gradient(135deg, #1e6b3e, #1a5a35);
+    background: linear-gradient(135deg, #1e6b3e 0%, #2d8f5a 25%, #3ba76c 50%, #2d8f5a 75%, #1e6b3e 100%);
     color: white;
     padding: 4rem 0;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(30, 107, 62, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 107, 62, 0.1) 75%), 
+                linear-gradient(45deg, rgba(30, 107, 62, 0.1) 25%, transparent 25%, transparent 75%, rgba(30, 107, 62, 0.1) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    animation: gradientShift 20s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.2; }
+}
+
+.cta > * {
+    position: relative;
+    z-index: 2;
 }
 
 .cta h2 {
     color: white;
     margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 2.5rem;
+}
+
+.cta p {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .cta-buttons {
@@ -655,15 +795,40 @@ button:focus {
 
 /* Page Header Styles */
 .page-header {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #1e6b3e 0%, #2c8659 50%, #3a9b6b 100%);
     padding: 4rem 0 2rem;
     text-align: center;
+    position: relative;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(30, 107, 62, 0.95) 0%, rgba(44, 134, 89, 0.85) 50%, rgba(58, 155, 107, 0.9) 100%);
+    z-index: 1;
+}
+
+.page-header > * {
+    position: relative;
+    z-index: 2;
+}
+
+.page-header h1 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .page-subtitle {
     font-size: 1.2rem;
-    color: #495057;
+    color: #ffffff;
     margin-top: 1rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Active Navigation Link */
@@ -705,11 +870,14 @@ button:focus {
 }
 
 .rates-notes {
-    background: #f8f9fa;
-    padding: 1rem;
-    border-radius: 5px;
+    background: linear-gradient(135deg, #e8f5e8 0%, #d4edda 50%, #c3e6cb 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
     margin-top: 1rem;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    border-left: 4px solid #1e6b3e;
+    box-shadow: 0 4px 12px rgba(30, 107, 62, 0.1);
+    color: #1a252f;
 }
 
 /* Included Items Grid */
@@ -781,8 +949,20 @@ button:focus {
 
 /* Contact Form Styles */
 .contact-form-section {
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 25%, #f8f9fa 50%, #e9ecef 75%, #f8f9fa 100%);
     padding: 4rem 0;
+    position: relative;
+}
+
+.contact-form-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(30, 107, 62, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(30, 107, 62, 0.03) 0%, transparent 50%);
 }
 
 .form-container {
@@ -900,8 +1080,9 @@ button:focus {
 
 /* Directions Styles */
 .directions {
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #e8f5e8 0%, #f8f9fa 25%, #e8f5e8 50%, #f8f9fa 75%, #e8f5e8 100%);
     padding: 4rem 0;
+    position: relative;
 }
 
 .directions-content {
