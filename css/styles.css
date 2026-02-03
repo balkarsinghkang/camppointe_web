@@ -27,27 +27,43 @@ img[src*="static.wix"] + *::before {
     margin: 10px 0;
 }
 
-/* CSS Custom Properties for Enhanced Theme */
+/* CSS Custom Properties for Retirement-Friendly Theme */
 :root {
-    --primary-green: #1e6b3e;
-    --primary-green-light: #2d8f5a;
-    --primary-green-lighter: #3ba76c;
-    --primary-green-dark: #0f5a2c;
-    --primary-green-darker: #0a4621;
-    --text-dark: #1a252f;
-    --text-medium: #2c3e50;
-    --text-light: #495057;
-    --background-light: #f8f9fa;
+    /* Mature, sophisticated color palette */
+    --primary-green: #2c5530;
+    --primary-green-light: #4a7c59;
+    --primary-green-lighter: #6b9b7c;
+    --primary-green-dark: #1a3d1e;
+    --primary-green-darker: #0f2612;
+    
+    /* High contrast text for readability */
+    --text-dark: #000000;
+    --text-medium: #333333;
+    --text-light: #555555;
+    --text-extra-light: #777777;
+    
+    /* Calming, accessible backgrounds */
+    --background-light: #fafafa;
     --background-lighter: #ffffff;
-    --accent-orange: #ff8c00;
-    --success-green: #28a745;
-    --info-blue: #17a2b8;
-    --warning-yellow: #ffc107;
-    --danger-red: #dc3545;
+    --background-warm: #f7f5f3;
+    
+    /* Retirement-focused accent colors */
+    --accent-gold: #b8860b;
+    --accent-blue: #4682b4;
+    --success-green: #228b22;
+    --info-blue: #4682b4;
+    --warning-amber: #ff8c00;
+    --danger-red: #dc143c;
+    
+    /* Subtle, comfortable gradients */
     --gradient-primary: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-light) 50%, var(--primary-green-lighter) 100%);
-    --gradient-secondary: linear-gradient(135deg, var(--background-lighter) 0%, var(--background-light) 50%, var(--background-lighter) 100%);
-    --gradient-hero: linear-gradient(135deg, #e8f5e8 0%, #d4edda 50%, #c3e6cb 100%);
-    --shadow-light: 0 4px 15px rgba(30, 107, 62, 0.1);
+    --gradient-secondary: linear-gradient(135deg, var(--background-lighter) 0%, var(--background-light) 50%, var(--background-warm) 100%);
+    --gradient-hero: linear-gradient(135deg, #f0f4f0 0%, #e8f0e8 50%, #dce8dc 100%);
+    
+    /* Softer shadows for comfort */
+    --shadow-light: 0 2px 8px rgba(44, 85, 48, 0.1);
+    --shadow-medium: 0 4px 16px rgba(44, 85, 48, 0.15);
+    --shadow-heavy: 0 8px 24px rgba(44, 85, 48, 0.2);
     --shadow-medium: 0 8px 25px rgba(30, 107, 62, 0.15);
     --shadow-heavy: 0 15px 35px rgba(30, 107, 62, 0.2);
 }
@@ -82,57 +98,78 @@ img[src*="static.wix"] + *::before {
 
 html {
     scroll-behavior: smooth;
+    /* Enable responsive font scaling */
+    font-size: clamp(14px, 2.5vw, 18px);
 }
 
 body {
     font-family: 'Open Sans', Arial, sans-serif;
-    line-height: 1.6;
-    color: #212529;
-    background-color: #fff;
+    line-height: 1.8; /* Increased line height for readability */
+    color: var(--text-dark);
+    background-color: var(--background-lighter);
+    font-size: 1rem; /* Use relative sizing */
+    /* Prevent horizontal scrolling */
+    overflow-x: hidden;
 }
 
 .container {
-    max-width: 1200px;
+    /* Fluid container with constraints */
+    max-width: min(1200px, 95vw);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 clamp(15px, 3vw, 30px);
+    width: 100%;
 }
 
-/* Typography */
+/* Senior-Friendly Fluid Typography */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    font-weight: 600; /* Slightly lighter weight for comfort */
+    line-height: 1.4; /* Better spacing for readability */
+    margin-bottom: 1.5rem; /* More spacing */
+    color: var(--text-dark);
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
-h4 { font-size: 1.25rem; }
+/* Fluid typography that scales with viewport */
+h1 { 
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+h2 { 
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+}
+h3 { 
+    font-size: clamp(1.3rem, 3vw, 2rem);
+}
+h4 { 
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+}
 
 p {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
+    margin-bottom: 1.5rem; /* More paragraph spacing */
+    font-size: clamp(0.95rem, 2vw, 1.2rem); /* Fluid paragraph text */
+    line-height: 1.8; /* Extra line spacing */
+    color: var(--text-medium);
 }
 
-/* Button Styles */
+/* Senior-Friendly Button Styles */
 .btn-primary, .btn-secondary {
     display: inline-block;
-    padding: 12px 24px;
-    border-radius: 5px;
+    padding: 16px 32px; /* Larger padding for easier clicking */
+    border-radius: 8px; /* Slightly rounded for modern feel */
     text-decoration: none;
     font-weight: 600;
+    font-size: 1.1rem; /* Larger button text */
     text-align: center;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+    transition: all 0.2s ease; /* Faster, smoother transitions */
+    border: 3px solid transparent; /* Thicker borders for visibility */
     cursor: pointer;
+    min-width: 150px; /* Minimum width for touch targets */
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #1e6b3e 0%, #2d8f5a 50%, #3ba76c 100%);
+    background: var(--gradient-primary);
     color: white;
-    border-color: #1e6b3e;
-    box-shadow: 0 4px 15px rgba(30, 107, 62, 0.3);
+    border-color: var(--primary-green);
+    box-shadow: var(--shadow-medium);
     position: relative;
     overflow: hidden;
 }
@@ -153,23 +190,43 @@ p {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #0f5a2c 0%, #1d7a48 50%, #2b9558 100%);
+    background: linear-gradient(135deg, var(--primary-green-dark) 0%, var(--primary-green) 50%, var(--primary-green-light) 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(30, 107, 62, 0.4);
+    box-shadow: var(--shadow-heavy);
 }
 
 .btn-secondary {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
-    color: #1e6b3e;
-    border-color: #1e6b3e;
-    box-shadow: 0 4px 15px rgba(30, 107, 62, 0.1);
+    background: #1E6B3E;
+    color: white;
+    border-color: #1E6B3E;
+    box-shadow: var(--shadow-medium);
+    font-weight: 600; /* Match primary button weight */
+    font-size: 1.1rem; /* Match primary button size */
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(44, 85, 48, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-secondary:hover::before {
+    left: 100%;
 }
 
 .btn-secondary:hover {
-    background: linear-gradient(135deg, #1e6b3e 0%, #2d8f5a 100%);
+    background: #155a32;
     color: white;
-    box-shadow: 0 6px 20px rgba(30, 107, 62, 0.3);
+    box-shadow: var(--shadow-heavy);
     transform: translateY(-2px);
+    border-color: #155a32;
 }
 
 /* Header Styles */
@@ -189,27 +246,30 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    max-width: min(1200px, 95vw);
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 clamp(15px, 3vw, 30px);
+    width: 100%;
 }
 
 .nav-logo {
     text-align: left;
     align-self: flex-start;
+    flex-shrink: 0; /* Prevent logo from shrinking */
 }
 
 .nav-logo a {
     text-decoration: none;
-    color: #1e6b3e;
+    color: var(--primary-green);
     display: block;
     text-align: left;
 }
 
 .nav-logo h1 {
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 3vw, 2.4rem); /* Fluid logo size */
     margin: 0;
     text-align: left;
+    font-weight: 600;
 }
 
 .logo-tagline {
@@ -222,11 +282,24 @@ p {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 1.5rem;
+    gap: clamp(0.8rem, 2vw, 1.8rem); /* Fluid gap between menu items */
     align-items: center;
     flex: 1;
     justify-content: center;
-    margin: 0 2rem;
+    margin: 0 clamp(1rem, 3vw, 3rem); /* Fluid margins */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-medium);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem clamp(0.3rem, 1vw, 0.8rem); /* Fluid padding */
+    white-space: nowrap;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem); /* Fluid font size */
 }
 
 .nav-item {
@@ -343,11 +416,24 @@ p {
 }
 
 .phone-number {
-    color: #1e6b3e;
-    font-weight: 600;
+    color: var(--text-dark); /* Use high contrast black text */
+    background-color: var(--background-light); /* Subtle background for visibility */
+    font-weight: 700; /* Bolder font weight */
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1.2rem; /* Larger phone number for seniors */
     white-space: nowrap;
+    padding: 10px 15px; /* More padding for better visibility */
+    border-radius: 8px;
+    border: 2px solid var(--primary-green-lighter); /* Subtle border for definition */
+    transition: all 0.2s ease;
+}
+
+.phone-number:hover {
+    background-color: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(44, 85, 48, 0.3);
 }
 
 .hamburger {
@@ -708,11 +794,12 @@ p {
 .cta .btn-secondary {
     border-color: white;
     color: white;
+    background: #1E6B3E;
 }
 
 .cta .btn-secondary:hover {
     background: white;
-    color: #1e6b3e;
+    color: #1E6B3E;
 }
 
 /* Footer */
@@ -765,12 +852,78 @@ p {
     color: #adb5bd;
 }
 
-/* Responsive Design */
+/* Enhanced Responsive Design with Multiple Breakpoints */
+
+/* Large Desktop (1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1400px;
+        padding: 0 30px;
+    }
+    
+    .nav-container {
+        max-width: 1400px;
+        padding: 0 30px;
+    }
+    
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.8rem; }
+    
+    .nav-logo h1 {
+        font-size: 2.4rem;
+    }
+}
+
+/* Tablet and Small Desktop (769px to 1199px) */
+@media (min-width: 769px) and (max-width: 1199px) {
+    .container {
+        padding: 0 25px;
+    }
+    
+    .nav-container {
+        padding: 0 25px;
+    }
+    
+    .nav-menu {
+        gap: 1.2rem;
+        margin: 0 1rem;
+    }
+    
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2.2rem; }
+    
+    .nav-logo h1 {
+        font-size: 2rem;
+    }
+    
+    .phone-number {
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile and Tablet Portrait (768px and below) */
 @media (max-width: 768px) {
+    body {
+        font-size: 16px; /* Slightly smaller on mobile */
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+        flex-wrap: nowrap;
+    }
+    
+    .nav-logo h1 {
+        font-size: 1.8rem;
+    }
+    
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 80px;
         flex-direction: column;
         background-color: white;
         width: 100%;
@@ -778,14 +931,33 @@ p {
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0,0,0,0.05);
         padding: 2rem 0;
+        z-index: 999;
+        flex: none;
+        margin: 0;
+        justify-content: flex-start;
+        gap: 0;
     }
 
     .nav-menu.active {
         left: 0;
     }
+    
+    .nav-item {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .nav-link {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        display: block;
+        width: 100%;
+    }
 
     .hamburger {
         display: flex;
+        flex-direction: column;
+        cursor: pointer;
     }
 
     .hamburger.active .bar:nth-child(2) {
@@ -795,6 +967,99 @@ p {
     .hamburger.active .bar:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+    
+    .nav-cta {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        align-items: center;
+    }
+    
+    .phone-number {
+        font-size: 1.1rem;
+        padding: 10px 15px;
+    }
+    
+    .btn-primary {
+        padding: 14px 24px;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    /* Typography adjustments */
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.4rem; }
+    h4 { font-size: 1.2rem; }
+    
+    p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}
+
+/* Small Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    .nav-container {
+        padding: 0 10px;
+    }
+    
+    .nav-logo h1 {
+        font-size: 1.6rem;
+    }
+    
+    .logo-tagline {
+        font-size: 0.8rem;
+    }
+    
+    .nav-cta {
+        gap: 0.5rem;
+    }
+    
+    .phone-number {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+    
+    .btn-primary {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+    
+    /* Typography for small screens */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+    h4 { font-size: 1.1rem; }
+    
+    p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.2rem;
+    }
+    
+    .nav-menu {
+        top: 70px;
+    }
+    
+    .nav-link {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
 
     .hamburger.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
