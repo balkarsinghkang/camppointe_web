@@ -194,14 +194,22 @@ p {
     padding: 0 20px;
 }
 
+.nav-logo {
+    text-align: left;
+    align-self: flex-start;
+}
+
 .nav-logo a {
     text-decoration: none;
     color: #1e6b3e;
+    display: block;
+    text-align: left;
 }
 
 .nav-logo h1 {
     font-size: 1.8rem;
     margin: 0;
+    text-align: left;
 }
 
 .logo-tagline {
@@ -216,6 +224,9 @@ p {
     list-style: none;
     gap: 1.5rem;
     align-items: center;
+    flex: 1;
+    justify-content: center;
+    margin: 0 2rem;
 }
 
 .nav-item {
@@ -328,6 +339,7 @@ p {
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex-shrink: 0;
 }
 
 .phone-number {
@@ -335,6 +347,7 @@ p {
     font-weight: 600;
     text-decoration: none;
     font-size: 1.1rem;
+    white-space: nowrap;
 }
 
 .hamburger {
@@ -1446,9 +1459,10 @@ button:focus {
     }
 
     .nav-cta {
-        flex-direction: column;
+        flex-direction: row;
         gap: 0.5rem;
         padding: 0 1rem;
+        justify-content: center;
     }
 
     .cta-book-now {
@@ -1461,6 +1475,7 @@ button:focus {
     .phone-number {
         font-size: 1rem;
         text-align: center;
+        white-space: nowrap;
     }
 }
     
