@@ -260,7 +260,7 @@ p {
 
 .nav-logo a {
     text-decoration: none;
-    color: var(--primary-green);
+    color: var(--primary-green-dark);
     display: block;
     text-align: left;
 }
@@ -851,6 +851,10 @@ p {
     margin-bottom: 1rem;
 }
 
+.footer-section p {
+    color: white !important;
+}
+
 .footer-section ul {
     list-style: none;
 }
@@ -878,7 +882,7 @@ p {
     border-top: 1px solid #495057;
     padding-top: 1rem;
     text-align: center;
-    color: #adb5bd;
+    color: white;
 }
 
 /* Enhanced Responsive Design with Multiple Breakpoints */
@@ -1579,10 +1583,16 @@ button:focus {
 }
 
 /* Policies Page Styles */
-.rules-grid,
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
 .safety-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 2rem;
 }
@@ -1789,9 +1799,14 @@ button:focus {
         gap: 0.5rem;
     }
     
-    .rules-grid,
+    .rules-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
     .safety-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
     
     .form-row {
@@ -1812,6 +1827,12 @@ button:focus {
     
     .page-header {
         padding: 2rem 0 1rem;
+    }
+    
+    .rules-grid,
+    .safety-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
     
     .included-grid,
