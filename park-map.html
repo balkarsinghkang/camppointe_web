@@ -106,33 +106,36 @@
         </section>
 
         <!-- Map Controls -->
-        <section class="map-controls">
+        <section class="map-controls fade-in-up" style="background: #f8f9fa; padding: 3rem 0; border-bottom: 1px solid #e9ecef;">
             <div class="container">
-                <div class="map-options">
-                    <div class="view-toggles">
-                        <button class="toggle-btn active" data-view="overview">Park Overview</button>
-                        <button class="toggle-btn" data-view="sites">RV Sites</button>
-                        <button class="toggle-btn" data-view="amenities">Amenities</button>
-                        <button class="toggle-btn" data-view="lake">Lake Access</button>
+                <div class="map-options" style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; align-items: start;">
+                    <div class="view-toggles" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(30, 107, 62, 0.1);">
+                        <h3 style="color: #1e6b3e; font-size: 1.5rem; margin-bottom: 1.5rem; font-weight: 600; text-align: center;">Map Views</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                            <button class="toggle-btn active" data-view="overview" style="padding: 1rem; border: 2px solid #1e6b3e; background: #1e6b3e; color: white; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">Park Overview</button>
+                            <button class="toggle-btn" data-view="sites" style="padding: 1rem; border: 2px solid #1e6b3e; background: white; color: #1e6b3e; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">RV Sites</button>
+                            <button class="toggle-btn" data-view="amenities" style="padding: 1rem; border: 2px solid #1e6b3e; background: white; color: #1e6b3e; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">Amenities</button>
+                            <button class="toggle-btn" data-view="lake" style="padding: 1rem; border: 2px solid #1e6b3e; background: white; color: #1e6b3e; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">Lake Access</button>
+                        </div>
                     </div>
-                    <div class="map-legend">
-                        <h4>Map Legend</h4>
-                        <div class="legend-items">
-                            <div class="legend-item">
-                                <span class="legend-color" style="background: var(--primary-color);"></span>
-                                <span>RV Sites</span>
+                    <div class="map-legend" style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 15px rgba(30, 107, 62, 0.1);">
+                        <h4 style="color: #1e6b3e; font-size: 1.3rem; margin-bottom: 1.5rem; font-weight: 600; text-align: center;">Map Legend</h4>
+                        <div class="legend-items" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div class="legend-item" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">
+                                <span class="legend-color" style="background: #1e6b3e; width: 20px; height: 20px; border-radius: 4px; display: block;"></span>
+                                <span style="color: #333333; font-weight: 500;">RV Sites</span>
                             </div>
-                            <div class="legend-item">
-                                <span class="legend-color" style="background: var(--secondary-color);"></span>
-                                <span>Amenities</span>
+                            <div class="legend-item" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">
+                                <span class="legend-color" style="background: #4682b4; width: 20px; height: 20px; border-radius: 4px; display: block;"></span>
+                                <span style="color: #333333; font-weight: 500;">Amenities</span>
                             </div>
-                            <div class="legend-item">
-                                <span class="legend-color" style="background: var(--accent-color);"></span>
-                                <span>Lake Access</span>
+                            <div class="legend-item" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">
+                                <span class="legend-color" style="background: #b8860b; width: 20px; height: 20px; border-radius: 4px; display: block;"></span>
+                                <span style="color: #333333; font-weight: 500;">Lake Access</span>
                             </div>
-                            <div class="legend-item">
-                                <span class="legend-color" style="background: #28a745;"></span>
-                                <span>Roads & Paths</span>
+                            <div class="legend-item" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px;">
+                                <span class="legend-color" style="background: #28a745; width: 20px; height: 20px; border-radius: 4px; display: block;"></span>
+                                <span style="color: #333333; font-weight: 500;">Roads & Paths</span>
                             </div>
                         </div>
                     </div>
@@ -141,17 +144,23 @@
         </section>
 
         <!-- Interactive Map Section -->
-        <section class="interactive-map">
+        <section class="interactive-map fade-in-up" style="padding: 4rem 0; background: linear-gradient(135deg, #f0f4f0 0%, #e8f0e8 50%, #dce8dc 100%);">
             <div class="container">
-                <div class="map-container">
-                    <div class="park-map" id="parkMap">
+                <div class="map-container" style="max-width: 1000px; margin: 0 auto;">
+                    <div class="park-map" id="parkMap" style="background: white; border-radius: 20px; box-shadow: 0 15px 35px rgba(30, 107, 62, 0.2); overflow: hidden; min-height: 400px; display: flex; align-items: center; justify-content: center;">
                         <!-- Map will be dynamically generated -->
-                        <div class="map-placeholder">
+                        <div class="map-placeholder" style="text-align: center; padding: 4rem 2rem;">
                             <div class="map-content">
-                                <h3>Interactive Park Map</h3>
-                                <p>Detailed park map coming soon</p>
-                                <p>For now, please see the facility overview below</p>
-                                <small>Call for detailed site information: <a href="tel:940-277-3435">940-277-3435</a></small>
+                                <div style="margin-bottom: 2rem;">
+                                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #1e6b3e, #4a7c59); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🗺️</div>
+                                </div>
+                                <h3 style="color: #1e6b3e; font-size: 2rem; margin-bottom: 1rem; font-weight: 700;">Interactive Park Map</h3>
+                                <p style="color: #666666; font-size: 1.2rem; margin-bottom: 1.5rem; line-height: 1.6;">Detailed interactive map coming soon to help you navigate CampPointe with ease</p>
+                                <p style="color: #333333; font-size: 1.1rem; margin-bottom: 2rem;">For now, please see the comprehensive facility overview sections below</p>
+                                <div style="background: #e8f5e8; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #1e6b3e; display: inline-block;">
+                                    <small style="color: #1e6b3e; font-weight: 600; font-size: 1rem;">Need detailed site information?</small><br>
+                                    <a href="tel:940-277-3435" style="color: #1e6b3e; text-decoration: none; font-weight: bold; font-size: 1.2rem;">📞 Call 940-277-3435</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -160,102 +169,70 @@
         </section>
 
         <!-- Park Layout Overview -->
-        <section class="park-overview">
+        <section class="park-overview fade-in-up">
             <div class="container">
-                <h2 class="section-title">Park Layout Overview</h2>
-                <div class="layout-grid">
-                    <div class="layout-section">
-                        <div class="section-header">
-                            <h3>🏠 RV Sites</h3>
-                            <span class="site-count">50+ Sites Available</span>
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #1e6b3e; margin-bottom: 1rem; font-weight: 700;">Park Layout Overview</h2>
+                    <p style="font-size: 1.2rem; color: #666666; max-width: 800px; margin: 0 auto; line-height: 1.6;">Discover all the features and facilities that make CampPointe your perfect Lake Texoma destination</p>
+                </div>
+                
+                <div class="layout-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
+                    <div class="layout-section" style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e; transition: all 0.3s ease;">
+                        <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+                            <h3 style="color: #1e6b3e; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: 600;">🏠 RV Sites</h3>
+                            <span class="site-count" style="background: #e8f5e8; color: #1e6b3e; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.9rem; font-weight: 600;">50+ Sites Available</span>
                         </div>
                         <div class="section-details">
-                            <h4>Site Types:</h4>
-                            <ul>
-                                <li><strong>Premium Lakefront:</strong> Direct lake views, 50 amp, full hookups</li>
-                                <li><strong>Standard Full Hookup:</strong> 50/30 amp, water, sewer, cable ready</li>
-                                <li><strong>Back-in Sites:</strong> 30-40 feet, easy access, level pads</li>
-                                <li><strong>Back-In Sites:</strong> Currently available, various sizes to accommodate different RVs</li>
+                            <h4 style="color: #333333; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 600;">Site Types:</h4>
+                            <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                                <li style="margin-bottom: 0.8rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;"><strong style="color: #1e6b3e;">Standard Full Hookup:</strong> 50/30 amp, water, sewer, cable ready</li>
+                                <li style="margin-bottom: 0.8rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;"><strong style="color: #1e6b3e;">Back-in Sites:</strong> 30-40 feet, easy access, level pads</li>
+                                <li style="margin-bottom: 0.8rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;"><strong style="color: #1e6b3e;">Various Sizes:</strong> Accommodate different RV types and lengths</li>
                             </ul>
                             
-                            <h4>Site Features:</h4>
-                            <ul>
-                                <li>Level concrete pads</li>
-                                <li>Picnic tables at select sites</li>
-                                <li>Fire rings available</li>
-                                <li>Additional vehicle parking</li>
+                            <h4 style="color: #333333; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 600;">Site Features:</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.6rem; padding: 0.6rem; background: #e8f5e8; border-radius: 6px; color: #333333;">✓ Picnic tables at select sites</li>
+                                <li style="margin-bottom: 0.6rem; padding: 0.6rem; background: #e8f5e8; border-radius: 6px; color: #333333;">✓ Fire rings available</li>
+                                <li style="margin-bottom: 0.6rem; padding: 0.6rem; background: #e8f5e8; border-radius: 6px; color: #333333;">✓ Additional vehicle parking</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="layout-section">
-                        <div class="section-header">
-                            <h3>🏢 Main Facilities</h3>
-                            <span class="facility-count">Central Location</span>
+                    <div class="layout-section" style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e; transition: all 0.3s ease;">
+                        <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+                            <h3 style="color: #1e6b3e; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: 600;">🏢 Main Facilities</h3>
+                            <span class="facility-count" style="background: #e8f5e8; color: #1e6b3e; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.9rem; font-weight: 600;">Central Location</span>
                         </div>
                         <div class="section-details">
-                            <h4>Office & Check-in:</h4>
-                            <ul>
-                                <li>Registration and information</li>
-                                <li>Camp store supplies</li>
-                                <li>WiFi password distribution</li>
-                                <li>Local area information</li>
-                            </ul>
-                            
-                            <h4>Bathhouse Complex:</h4>
-                            <ul>
-                                <li>Men's and women's facilities</li>
-                                <li>Private shower stalls</li>
-                                <li>ADA accessible</li>
-                                <li>Climate controlled</li>
+                            <h4 style="color: #333333; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 600;">Office & Check-in:</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.8rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;">Registration and information</li>
+                                <li style="margin-bottom: 0.8rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;">Camp store supplies</li>
+                                <li style="margin-bottom: 0.8rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;">Local area information</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="layout-section">
-                        <div class="section-header">
-                            <h3>🌊 Lake Access</h3>
-                            <span class="access-type">Direct Access</span>
+                    <div class="layout-section" style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e; transition: all 0.3s ease;">
+                        <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+                            <h3 style="color: #1e6b3e; font-size: 1.8rem; margin-bottom: 0.5rem; font-weight: 600;">🐕 Pet Areas</h3>
+                            <span class="pet-friendly" style="background: #e8f5e8; color: #1e6b3e; padding: 0.5rem 1rem; border-radius: 25px; font-size: 0.9rem; font-weight: 600;">Pet Friendly</span>
                         </div>
                         <div class="section-details">
-                            <h4>Water Activities:</h4>
-                            <ul>
-                                <li><strong>Swimming Area:</strong> Designated safe swimming zone</li>
-                                <li><strong>Fishing Access:</strong> Shoreline fishing from multiple points</li>
-                                <li><strong>Boat Access:</strong> Nearby boat ramps and marinas</li>
-                                <li><strong>Beach Area:</strong> Sandy areas for relaxation</li>
+                            <h4 style="color: #333333; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 600;">Dog Areas:</h4>
+                            <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                                <li style="margin-bottom: 0.8rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;"><strong style="color: #1e6b3e;">Off-leash Area:</strong> Fenced dog run for exercise</li>
+                                <li style="margin-bottom: 0.8rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;"><strong style="color: #1e6b3e;">Walking Trails:</strong> Pet-friendly paths throughout park</li>
+                                <li style="margin-bottom: 0.8rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;"><strong style="color: #1e6b3e;">Waste Stations:</strong> Cleanup supplies provided</li>
                             </ul>
                             
-                            <h4>Safety Features:</h4>
-                            <ul>
-                                <li>Clearly marked swimming areas</li>
-                                <li>Emergency contact information posted</li>
-                                <li>Life ring stations</li>
-                                <li>Good lighting for evening activities</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="layout-section">
-                        <div class="section-header">
-                            <h3>🐕 Pet Areas</h3>
-                            <span class="pet-friendly">Pet Friendly</span>
-                        </div>
-                        <div class="section-details">
-                            <h4>Dog Areas:</h4>
-                            <ul>
-                                <li><strong>Off-leash Area:</strong> Fenced dog run for exercise</li>
-                                <li><strong>Walking Trails:</strong> Pet-friendly paths throughout park</li>
-                                <li><strong>Waste Stations:</strong> Cleanup supplies provided</li>
-                                <li><strong>Water Stations:</strong> Fresh water for pets</li>
-                            </ul>
-                            
-                            <h4>Pet Policies:</h4>
-                            <ul>
-                                <li>Leash required in common areas</li>
-                                <li>2 pet maximum per site</li>
-                                <li>Current vaccinations required</li>
-                                <li>Pet fee applies - see rates</li>
+                            <h4 style="color: #333333; font-size: 1.3rem; margin-bottom: 1rem; font-weight: 600;">Pet Policies:</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.6rem; padding: 0.6rem; background: #e8f5e8; border-radius: 6px; color: #333333;">✓ Leash required in common areas</li>
+                                <li style="margin-bottom: 0.6rem; padding: 0.6rem; background: #e8f5e8; border-radius: 6px; color: #333333;">✓ 2 pet maximum per site</li>
+                                <li style="margin-bottom: 0.6rem; padding: 0.6rem; background: #e8f5e8; border-radius: 6px; color: #333333;">✓ Current vaccinations required</li>
+                                <li style="margin-bottom: 0.6rem; padding: 0.6rem; background: #e8f5e8; border-radius: 6px; color: #333333;">✓ Pet fee applies - see rates</li>
                             </ul>
                         </div>
                     </div>
@@ -264,48 +241,52 @@
         </section>
 
         <!-- Directions & Navigation -->
-        <section class="directions-nav">
+        <section class="directions-nav fade-in-up" style="background: #f8f9fa; padding: 4rem 0;">
             <div class="container">
-                <h2 class="section-title">Getting Around the Park</h2>
-                <div class="nav-info">
-                    <div class="nav-section">
-                        <h3>🚗 Driving Directions Within Park</h3>
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #1e6b3e; margin-bottom: 1rem; font-weight: 700;">Getting Around the Park</h2>
+                    <p style="font-size: 1.2rem; color: #666666; max-width: 800px; margin: 0 auto; line-height: 1.6;">Easy navigation and clear pathways for a comfortable stay</p>
+                </div>
+                
+                <div class="nav-info" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem;">
+                    <div class="nav-section" style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-top: 5px solid #1e6b3e;">
+                        <h3 style="color: #1e6b3e; font-size: 1.8rem; margin-bottom: 2rem; font-weight: 600; text-align: center;">🚗 Driving Directions Within Park</h3>
                         <div class="directions-content">
-                            <h4>From Main Entrance:</h4>
-                            <ol>
-                                <li><strong>Check-in:</strong> Stop at office for registration and site assignment</li>
-                                <li><strong>Main Road:</strong> Follow paved main road through park</li>
-                                <li><strong>Site Numbers:</strong> Look for clearly marked site numbers</li>
-                                <li><strong>Speed Limit:</strong> 5 MPH throughout park for safety</li>
+                            <h4 style="color: #333333; font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 600; text-align: center;">From Main Entrance:</h4>
+                            <ol style="padding-left: 0; list-style: none; margin-bottom: 2.5rem;">
+                                <li style="margin-bottom: 1rem; padding: 1rem; background: #e8f5e8; border-radius: 10px; border-left: 4px solid #1e6b3e; position: relative; padding-left: 3rem;"><span style="position: absolute; left: 1rem; font-weight: bold; color: #1e6b3e;">1.</span><strong style="color: #1e6b3e;">Check-in:</strong> Stop at office for registration and site assignment</li>
+                                <li style="margin-bottom: 1rem; padding: 1rem; background: #e8f5e8; border-radius: 10px; border-left: 4px solid #1e6b3e; position: relative; padding-left: 3rem;"><span style="position: absolute; left: 1rem; font-weight: bold; color: #1e6b3e;">2.</span><strong style="color: #1e6b3e;">Main Road:</strong> Follow paved main road through park</li>
+                                <li style="margin-bottom: 1rem; padding: 1rem; background: #e8f5e8; border-radius: 10px; border-left: 4px solid #1e6b3e; position: relative; padding-left: 3rem;"><span style="position: absolute; left: 1rem; font-weight: bold; color: #1e6b3e;">3.</span><strong style="color: #1e6b3e;">Site Numbers:</strong> Look for clearly marked site numbers</li>
+                                <li style="margin-bottom: 1rem; padding: 1rem; background: #e8f5e8; border-radius: 10px; border-left: 4px solid #1e6b3e; position: relative; padding-left: 3rem;"><span style="position: absolute; left: 1rem; font-weight: bold; color: #1e6b3e;">4.</span><strong style="color: #1e6b3e;">Speed Limit:</strong> 5 MPH throughout park for safety</li>
                             </ol>
                             
-                            <h4>Site Access Tips:</h4>
-                            <ul>
-                                <li>All roads are paved for easy RV navigation</li>
-                                <li>Back-in sites accessible with convenient positioning</li>
-                                <li>Back-in sites may require slight maneuvering</li>
-                                <li>Staff available to guide large RVs if needed</li>
+                            <h4 style="color: #333333; font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 600; text-align: center;">Site Access Tips:</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.8rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;">✓ All roads are paved for easy RV navigation</li>
+                                <li style="margin-bottom: 0.8rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;">✓ Back-in sites accessible with convenient positioning</li>
+                                <li style="margin-bottom: 0.8rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;">✓ Sites may require slight maneuvering for larger RVs</li>
+                                <li style="margin-bottom: 0.8rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;">✓ Staff available to guide large RVs if needed</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="nav-section">
-                        <h3>🚶‍♀️ Walking Paths & Trails</h3>
+                    <div class="nav-section" style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-top: 5px solid #1e6b3e;">
+                        <h3 style="color: #1e6b3e; font-size: 1.8rem; margin-bottom: 2rem; font-weight: 600; text-align: center;">🚶‍♀️ Walking Paths & Trails</h3>
                         <div class="directions-content">
-                            <h4>Pedestrian Areas:</h4>
-                            <ul>
-                                <li><strong>Lakefront Trail:</strong> Scenic walk along the shoreline</li>
-                                <li><strong>Main Pathway:</strong> Connects all major facilities</li>
-                                <li><strong>Pet Walking Areas:</strong> Designated paths for dog walking</li>
-                                <li><strong>Exercise Loop:</strong> Circuit path for morning walks/jogs</li>
+                            <h4 style="color: #333333; font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 600; text-align: center;">Pedestrian Areas:</h4>
+                            <ul style="list-style: none; padding: 0; margin-bottom: 2.5rem;">
+                                <li style="margin-bottom: 1rem; padding: 1rem; background: #e8f5e8; border-radius: 10px; border-left: 4px solid #1e6b3e;"><strong style="color: #1e6b3e;">Park Perimeter Trail:</strong> Scenic walk around the park grounds</li>
+                                <li style="margin-bottom: 1rem; padding: 1rem; background: #e8f5e8; border-radius: 10px; border-left: 4px solid #1e6b3e;"><strong style="color: #1e6b3e;">Main Pathway:</strong> Connects all major facilities</li>
+                                <li style="margin-bottom: 1rem; padding: 1rem; background: #e8f5e8; border-radius: 10px; border-left: 4px solid #1e6b3e;"><strong style="color: #1e6b3e;">Pet Walking Areas:</strong> Designated paths for dog walking</li>
+                                <li style="margin-bottom: 1rem; padding: 1rem; background: #e8f5e8; border-radius: 10px; border-left: 4px solid #1e6b3e;"><strong style="color: #1e6b3e;">Exercise Loop:</strong> Circuit path for morning walks/jogs</li>
                             </ul>
                             
-                            <h4>Accessibility:</h4>
-                            <ul>
-                                <li>ADA-compliant pathways to main facilities</li>
-                                <li>Well-lit paths for evening safety</li>
-                                <li>Benches and rest areas along trails</li>
-                                <li>Clear signage throughout park</li>
+                            <h4 style="color: #333333; font-size: 1.4rem; margin-bottom: 1.5rem; font-weight: 600; text-align: center;">Accessibility:</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 0.8rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;">✓ ADA-compliant pathways to main facilities</li>
+                                <li style="margin-bottom: 0.8rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;">✓ Well-lit paths for evening safety</li>
+                                <li style="margin-bottom: 0.8rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;">✓ Benches and rest areas along trails</li>
+                                <li style="margin-bottom: 0.8rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 3px solid #1e6b3e;">✓ Clear signage throughout park</li>
                             </ul>
                         </div>
                     </div>
@@ -314,50 +295,53 @@
         </section>
 
         <!-- Emergency Information -->
-        <section class="emergency-info">
+        <section class="emergency-info fade-in-up" style="padding: 4rem 0;">
             <div class="container">
-                <h2 class="section-title">📋 Park Information & Emergency</h2>
-                <div class="emergency-grid">
-                    <div class="info-card urgent">
-                        <h3>🚨 Emergency Contacts</h3>
-                        <div class="contact-list">
-                            <p><strong>Park Emergency:</strong> <a href="tel:940-277-3435">940-277-3435</a></p>
-                            <p><strong>911 Emergency:</strong> <a href="tel:911">911</a></p>
-                            <p><strong>Poison Control:</strong> <a href="tel:1-800-222-1222">1-800-222-1222</a></p>
-                            <p><strong>Local Hospital:</strong> TMC Bonham (903) 583-8585</p>
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: 2.5rem; color: #1e6b3e; margin-bottom: 1rem; font-weight: 700;">📋 Park Information & Emergency</h2>
+                    <p style="font-size: 1.2rem; color: #666666; max-width: 800px; margin: 0 auto; line-height: 1.6;">Essential information for your safety and convenience</p>
+                </div>
+                
+                <div class="emergency-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <div class="info-card urgent" style="background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%); padding: 2.5rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(220, 20, 60, 0.15); border-left: 5px solid #dc143c; text-align: center;">
+                        <h3 style="color: #dc143c; font-size: 1.8rem; margin-bottom: 2rem; font-weight: 600;">🚨 Emergency Contacts</h3>
+                        <div class="contact-list" style="text-align: left;">
+                            <p style="margin-bottom: 1rem; padding: 0.8rem; background: white; border-radius: 8px; border-left: 3px solid #dc143c;"><strong style="color: #dc143c;">Park Emergency:</strong> <a href="tel:940-277-3435" style="color: #dc143c; text-decoration: none; font-weight: bold;">940-277-3435</a></p>
+                            <p style="margin-bottom: 1rem; padding: 0.8rem; background: white; border-radius: 8px; border-left: 3px solid #dc143c;"><strong style="color: #dc143c;">911 Emergency:</strong> <a href="tel:911" style="color: #dc143c; text-decoration: none; font-weight: bold;">911</a></p>
+                            <p style="margin-bottom: 0; padding: 0.8rem; background: white; border-radius: 8px; border-left: 3px solid #dc143c;"><strong style="color: #dc143c;">Poison Control:</strong> <a href="tel:1-800-222-1222" style="color: #dc143c; text-decoration: none; font-weight: bold;">1-800-222-1222</a></p>
                         </div>
                     </div>
 
-                    <div class="info-card">
-                        <h3>🏥 Nearest Services</h3>
-                        <div class="services-list">
-                            <p><strong>Hospital:</strong> 15 minutes to Bonham</p>
-                            <p><strong>Grocery Store:</strong> 10 minutes to Gordonville</p>
-                            <p><strong>Gas Station:</strong> 5 minutes on FM 901</p>
-                            <p><strong>RV Service:</strong> 20 minutes to Sherman</p>
+                    <div class="info-card" style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e; text-align: center;">
+                        <h3 style="color: #1e6b3e; font-size: 1.8rem; margin-bottom: 2rem; font-weight: 600;">📍 Nearest Services</h3>
+                        <div class="services-list" style="text-align: left;">
+                            <p style="margin-bottom: 1rem; padding: 0.8rem; background: #e8f5e8; border-radius: 8px; border-left: 3px solid #1e6b3e;"><strong style="color: #1e6b3e;">Grocery Store:</strong> 10 minutes to Gordonville</p>
+                            <p style="margin-bottom: 1rem; padding: 0.8rem; background: #e8f5e8; border-radius: 8px; border-left: 3px solid #1e6b3e;"><strong style="color: #1e6b3e;">Gas Station:</strong> 5 minutes on FM 901</p>
+                            <p style="margin-bottom: 0; padding: 0.8rem; background: #e8f5e8; border-radius: 8px; border-left: 3px solid #1e6b3e;"><strong style="color: #1e6b3e;">RV Service:</strong> 20 minutes to Sherman</p>
                         </div>
                     </div>
 
-                    <div class="info-card">
-                        <h3>📍 Park Address</h3>
-                        <div class="address-info">
-                            <p><strong>CampPointe Lake Texoma RV Park</strong></p>
-                            <p>21847 Farm to Market Rd 901</p>
-                            <p>Gordonville, TX 76245</p>
-                            <p><strong>GPS Coordinates:</strong></p>
-                            <p>33.8853° N, 96.8642° W</p>
+                    <div class="info-card" style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e; text-align: center;">
+                        <h3 style="color: #1e6b3e; font-size: 1.8rem; margin-bottom: 2rem; font-weight: 600;">📍 Park Address</h3>
+                        <div class="address-info" style="text-align: center;">
+                            <p style="margin-bottom: 1rem; padding: 1rem; background: #e8f5e8; border-radius: 8px; font-weight: 600; color: #1e6b3e; font-size: 1.1rem;">CampPointe Lake Texoma RV Park</p>
+                            <p style="margin-bottom: 1.5rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; color: #333333;">21847 Farm to Market Rd 901<br>Gordonville, TX 76245</p>
+                            <p style="margin-bottom: 0.5rem; font-weight: 600; color: #1e6b3e;">GPS Coordinates:</p>
+                            <p style="margin-bottom: 0; padding: 0.8rem; background: #e8f5e8; border-radius: 8px; font-family: monospace; color: #333333;">33.8853° N, 96.8642° W</p>
                         </div>
                     </div>
 
-                    <div class="info-card">
-                        <h3>⏰ Important Hours</h3>
-                        <div class="hours-info">
-                            <p><strong>Office Hours:</strong></p>
-                            <p>Daily: 8:00 AM - 8:00 PM</p>
-                            <p><strong>Quiet Hours:</strong></p>
-                            <p>10:00 PM - 6:00 AM</p>
-                            <p><strong>Check-in:</strong> 2:00 PM</p>
-                            <p><strong>Check-out:</strong> 12:00 PM</p>
+                    <div class="info-card" style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e; text-align: center;">
+                        <h3 style="color: #1e6b3e; font-size: 1.8rem; margin-bottom: 2rem; font-weight: 600;">⏰ Important Hours</h3>
+                        <div class="hours-info" style="text-align: left;">
+                            <p style="margin-bottom: 1rem; padding: 0.8rem; background: #e8f5e8; border-radius: 8px; border-left: 3px solid #1e6b3e;"><strong style="color: #1e6b3e;">Office Hours:</strong></p>
+                            <p style="margin-bottom: 1.5rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; text-align: center; font-size: 1.1rem; font-weight: 600; color: #333333;">Daily: 8:00 AM - 8:00 PM</p>
+                            <p style="margin-bottom: 1rem; padding: 0.8rem; background: #e8f5e8; border-radius: 8px; border-left: 3px solid #1e6b3e;"><strong style="color: #1e6b3e;">Quiet Hours:</strong></p>
+                            <p style="margin-bottom: 1.5rem; padding: 0.8rem; background: #f8f9fa; border-radius: 8px; text-align: center; font-size: 1.1rem; font-weight: 600; color: #333333;">10:00 PM - 6:00 AM</p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                                <p style="margin-bottom: 0; padding: 0.6rem; background: #e8f5e8; border-radius: 6px; text-align: center; font-size: 0.9rem;"><strong style="color: #1e6b3e;">Check-in:</strong><br>2:00 PM</p>
+                                <p style="margin-bottom: 0; padding: 0.6rem; background: #e8f5e8; border-radius: 6px; text-align: center; font-size: 0.9rem;"><strong style="color: #1e6b3e;">Check-out:</strong><br>12:00 PM</p>
+                            </div>
                         </div>
                     </div>
                 </div>
