@@ -1351,11 +1351,21 @@ button:focus {
 }
 
 .fee-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
     padding: 0.8rem 0;
     border-bottom: 1px solid #eee;
+}
+
+.fee-description {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.fee-amount {
+    display: block;
+    color: var(--primary-green);
+    font-weight: 700;
 }
 
 .fee-item:last-child {
@@ -1604,9 +1614,27 @@ button:focus {
     margin-top: 2rem;
 }
 
+.checkout-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.policy-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
 .rule-category,
 .safety-category,
-.facility-section {
+.facility-section,
+.checkout-rules,
+.checkout-fees,
+.policy-standard,
+.policy-exceptions {
     background: white;
     padding: 2rem;
     border-radius: 10px;
@@ -1615,7 +1643,11 @@ button:focus {
 
 .rule-category h3,
 .safety-category h3,
-.facility-section h3 {
+.facility-section h3,
+.checkout-rules h3,
+.checkout-fees h3,
+.policy-standard h3,
+.policy-exceptions h3 {
     color: #1e6b3e;
     margin-bottom: 1rem;
     display: flex;
@@ -1623,16 +1655,169 @@ button:focus {
     gap: 0.5rem;
 }
 
+/* Exception grid for Special Circumstances */
+.exception-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.exception-item {
+    background: var(--background-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #1e6b3e;
+}
+
+.exception-item h4 {
+    color: #1e6b3e;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.exception-item p {
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.exception-item ul {
+    list-style: none;
+    margin: 0;
+}
+
+.exception-item li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.exception-item li:before {
+    content: "•";
+    color: #1e6b3e;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Guest Code of Conduct Styles - Simple Flexbox Approach */
+.container .conduct-content {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 2rem !important;
+    margin-top: 2rem !important;
+    width: 100% !important;
+}
+
+.container .expected-behavior,
+.container .prohibited-activities {
+    background: white !important;
+    padding: 2rem !important;
+    border-radius: 10px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
+    flex: 1 !important;
+}
+
+.expected-behavior h3,
+.prohibited-activities h3 {
+    color: #1e6b3e;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.expected-behavior ul {
+    list-style: none;
+    margin: 0;
+}
+
+.expected-behavior li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.expected-behavior li:before {
+    content: "✓";
+    color: #1e6b3e;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.container .prohibited-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1.25rem !important;
+    margin-top: 1rem !important;
+}
+
+.container .prohibited-item {
+    background: var(--background-light) !important;
+    padding: 1.25rem !important;
+    border-radius: 8px !important;
+    border-left: 4px solid #dc143c !important;
+    flex: 1 1 calc(50% - 0.625rem) !important;
+    min-width: 200px !important;
+}
+
+.prohibited-item {
+    background: var(--background-light);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border-left: 4px solid #dc143c;
+}
+
+.prohibited-item h4 {
+    color: #dc143c;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.prohibited-item ul {
+    list-style: none;
+    margin: 0;
+}
+
+.prohibited-item li {
+    position: relative;
+    padding-left: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-medium);
+    line-height: 1.5;
+}
+
+.prohibited-item li:before {
+    content: "×";
+    color: #dc143c;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
 .rule-content ul,
 .safety-category ul,
-.facility-content ul {
+.facility-content ul,
+.checkout-rules ul {
     list-style: none;
     margin-top: 1rem;
 }
 
 .rule-content li,
 .safety-category li,
-.facility-content li {
+.facility-content li,
+.checkout-rules li {
     position: relative;
     padding-left: 1.5rem;
     margin-bottom: 0.5rem;
@@ -1640,7 +1825,8 @@ button:focus {
 
 .rule-content li:before,
 .safety-category li:before,
-.facility-content li:before {
+.facility-content li:before,
+.checkout-rules li:before {
     content: "•";
     position: absolute;
     left: 0;
@@ -1852,6 +2038,21 @@ button:focus {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
+    }
+    
+    .exception-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .conduct-content {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+    
+    .prohibited-grid {
+        flex-direction: column !important;
+        gap: 1rem !important;
     }
     
     .pet-features-grid {
@@ -2305,6 +2506,16 @@ button:focus {
         gap: 1.5rem;
     }
     
+    .checkout-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .policy-details {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
     .reservation-methods {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
@@ -2340,10 +2551,35 @@ button:focus {
     .rules-grid,
     .safety-grid,
     .facility-rules,
+    .policy-details,
     .reservation-methods,
     .offers-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+    
+    .exception-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .conduct-content {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+    
+    .prohibited-grid {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+    }
+    
+    .prohibited-item {
+        flex: 1 1 100% !important;
+    }
+    
+    .checkout-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
     }
     
     /* Mobile amenities grid - 1 column on very small screens */

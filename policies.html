@@ -8,6 +8,28 @@
     <meta name="keywords" content="RV park rules Gordonville TX, RV park rules near Lake Texoma, quiet hours, pet rules, long-term RV park rules">
     <link rel="canonical" href="https://balkarsinghkang.github.io/camppointe_web/policies.html">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Dynamic Column Layout for Guest Code of Conduct */
+        @media (max-width: 768px) {
+            .conduct-content {
+                flex-direction: column !important;
+            }
+            .prohibited-grid {
+                flex-direction: column !important;
+            }
+            .prohibited-item {
+                flex: 1 1 100% !important;
+            }
+            /* Management Rights & Responsibilities responsive */
+            .rights-content {
+                flex-direction: column !important;
+            }
+            /* Contact methods already single column, just adjust gap for mobile */
+            .contact-methods {
+                gap: 1rem !important;
+            }
+        }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -359,8 +381,8 @@
             <div class="container">
                 <h2 class="section-title">Guest Code of Conduct</h2>
                 
-                <div class="conduct-content">
-                    <div class="expected-behavior">
+                <div class="conduct-content" style="display: flex; gap: 2rem; margin-top: 2rem;">
+                    <div class="expected-behavior" style="flex: 1; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
                         <h3>✅ Expected Behavior</h3>
                         <ul>
                             <li><strong>Respectful Treatment:</strong> Be courteous to staff and fellow guests</li>
@@ -372,10 +394,10 @@
                         </ul>
                     </div>
 
-                    <div class="prohibited-activities">
+                    <div class="prohibited-activities" style="flex: 1; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
                         <h3>❌ Prohibited Activities</h3>
-                        <div class="prohibited-grid">
-                            <div class="prohibited-item">
+                        <div class="prohibited-grid" style="display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 1rem;">
+                            <div class="prohibited-item" style="flex: 1 1 calc(50% - 0.625rem); min-width: 200px; background: #fafafa; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #dc143c;">
                                 <h4>Noise & Disruption</h4>
                                 <ul>
                                     <li>Excessive noise after quiet hours</li>
@@ -385,7 +407,7 @@
                                 </ul>
                             </div>
                             
-                            <div class="prohibited-item">
+                            <div class="prohibited-item" style="flex: 1 1 calc(50% - 0.625rem); min-width: 200px; background: #fafafa; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #dc143c;">
                                 <h4>Illegal Activities</h4>
                                 <ul>
                                     <li>Illegal drug use or possession</li>
@@ -395,7 +417,7 @@
                                 </ul>
                             </div>
                             
-                            <div class="prohibited-item">
+                            <div class="prohibited-item" style="flex: 1 1 calc(50% - 0.625rem); min-width: 200px; background: #fafafa; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #dc143c;">
                                 <h4>Commercial Activities</h4>
                                 <ul>
                                     <li>Unauthorized vendors or sales</li>
@@ -405,7 +427,7 @@
                                 </ul>
                             </div>
                             
-                            <div class="prohibited-item">
+                            <div class="prohibited-item" style="flex: 1 1 calc(50% - 0.625rem); min-width: 200px; background: #fafafa; padding: 1.25rem; border-radius: 8px; border-left: 4px solid #dc143c;">
                                 <h4>Environmental</h4>
                                 <ul>
                                     <li>Littering or improper waste disposal</li>
@@ -425,8 +447,8 @@
             <div class="container">
                 <h2 class="section-title">Management Rights & Responsibilities</h2>
                 
-                <div class="rights-content">
-                    <div class="management-authority">
+                <div class="rights-content" style="display: flex; gap: 2rem; margin-top: 2rem;">
+                    <div class="management-authority" style="flex: 1; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
                         <h3>🏛️ Management Authority</h3>
                         <p>CampPointe management reserves the right to:</p>
                         <ul>
@@ -439,7 +461,7 @@
                         </ul>
                     </div>
 
-                    <div class="liability-disclaimer">
+                    <div class="liability-disclaimer" style="flex: 1; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
                         <h3>⚖️ Liability & Responsibility</h3>
                         <div class="disclaimer-text">
                             <p><strong>Guest Responsibility:</strong> Guests are responsible for their personal property, vehicles, and actions. CampPointe is not liable for:</p>
@@ -462,26 +484,26 @@
         <section class="policy-contact">
             <div class="container">
                 <h2 class="section-title">Questions About Our Policies?</h2>
-                <div class="contact-info">
-                    <p>If you have questions about our policies or need clarification on any rules, please don't hesitate to contact us.</p>
+                <div class="contact-info" style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-top: 2rem;">
+                    <p style="color: #333333; font-size: 1.1rem; margin-bottom: 2rem; text-align: center;">If you have questions about our policies or need clarification on any rules, please don't hesitate to contact us.</p>
                     
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <h3>📞 Phone</h3>
-                            <p><a href="tel:940-277-3435">940-277-3435</a></p>
-                            <p>Daily: 8:00 AM - 8:00 PM</p>
+                    <div class="contact-methods" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                        <div class="contact-method" style="display: block !important; text-align: center; padding: 2rem; background: #fafafa; border-radius: 8px; border-left: 4px solid #1e6b3e; margin-bottom: 0 !important;">
+                            <h3 style="color: #1e6b3e; margin-bottom: 1.25rem; font-size: 1.3rem; font-weight: 600;">📞 Phone</h3>
+                            <p style="color: #333333; font-weight: 700; margin-bottom: 0.75rem; font-size: 1.1rem; line-height: 1.4;"><a href="tel:940-277-3435" style="color: #1e6b3e; text-decoration: none;">940-277-3435</a></p>
+                            <p style="color: #666666; font-size: 1rem; line-height: 1.5; margin: 0;">Daily: 8:00 AM - 8:00 PM</p>
                         </div>
                         
-                        <div class="contact-method">
-                            <h3>✉️ Email</h3>
-                            <p><a href="mailto:info@camppointe.com">info@camppointe.com</a></p>
-                            <p>Response within 24 hours</p>
+                        <div class="contact-method" style="display: block !important; text-align: center; padding: 2rem; background: #fafafa; border-radius: 8px; border-left: 4px solid #1e6b3e; margin-bottom: 0 !important;">
+                            <h3 style="color: #1e6b3e; margin-bottom: 1.25rem; font-size: 1.3rem; font-weight: 600;">✉️ Email</h3>
+                            <p style="color: #333333; font-weight: 700; margin-bottom: 0.75rem; font-size: 1.1rem; line-height: 1.4;"><a href="mailto:info@camppointe.com" style="color: #1e6b3e; text-decoration: none;">info@camppointe.com</a></p>
+                            <p style="color: #666666; font-size: 1rem; line-height: 1.5; margin: 0;">Response within 24 hours</p>
                         </div>
                         
-                        <div class="contact-method">
-                            <h3>🏢 Office</h3>
-                            <p>21847 Farm to Market Rd 901<br>Gordonville, TX 76245</p>
-                            <p>In-person assistance available</p>
+                        <div class="contact-method" style="display: block !important; text-align: center; padding: 2rem; background: #fafafa; border-radius: 8px; border-left: 4px solid #1e6b3e; margin-bottom: 0 !important;">
+                            <h3 style="color: #1e6b3e; margin-bottom: 1.25rem; font-size: 1.3rem; font-weight: 600;">🏢 Office</h3>
+                            <p style="color: #333333; font-weight: normal; margin-bottom: 0.75rem; font-size: 1.1rem; line-height: 1.4;">21847 Farm to Market Rd 901<br>Gordonville, TX 76245</p>
+                            <p style="color: #666666; font-size: 1rem; line-height: 1.5; margin: 0;">In-person assistance available</p>
                         </div>
                     </div>
                 </div>
