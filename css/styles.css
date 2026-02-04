@@ -1597,8 +1597,16 @@ button:focus {
     margin-top: 2rem;
 }
 
+.facility-rules {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
 .rule-category,
-.safety-category {
+.safety-category,
+.facility-section {
     background: white;
     padding: 2rem;
     border-radius: 10px;
@@ -1606,7 +1614,8 @@ button:focus {
 }
 
 .rule-category h3,
-.safety-category h3 {
+.safety-category h3,
+.facility-section h3 {
     color: #1e6b3e;
     margin-bottom: 1rem;
     display: flex;
@@ -1615,20 +1624,23 @@ button:focus {
 }
 
 .rule-content ul,
-.safety-category ul {
+.safety-category ul,
+.facility-content ul {
     list-style: none;
     margin-top: 1rem;
 }
 
 .rule-content li,
-.safety-category li {
+.safety-category li,
+.facility-content li {
     position: relative;
     padding-left: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
 .rule-content li:before,
-.safety-category li:before {
+.safety-category li:before,
+.facility-content li:before {
     content: "•";
     position: absolute;
     left: 0;
@@ -1801,6 +1813,285 @@ button:focus {
     font-weight: 600;
 }
 
+/* Amenities Page Styles - Responsive Grid */
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Ensure 4 columns on larger screens */
+@media (min-width: 1025px) {
+    .amenities-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+}
+
+/* 3 columns for medium screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .amenities-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.8rem;
+    }
+}
+
+/* 2 columns for tablets */
+@media (max-width: 768px) {
+    .amenities-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .lake-features {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .pet-features-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+.amenity-card {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium);
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.amenity-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--primary-green-light);
+}
+
+.amenity-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.amenity-card h3 {
+    color: var(--primary-green-dark);
+    margin-bottom: 1rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 600;
+}
+
+.amenity-card p {
+    color: var(--text-medium);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.amenity-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.amenity-features li {
+    padding: 0.4rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.amenity-features li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-green);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Lake Features Grid */
+.lake-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.lake-feature {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.lake-feature:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--primary-green-light);
+}
+
+.feature-content h3 {
+    color: var(--primary-green-dark);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.feature-content p {
+    color: var(--text-medium);
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+.feature-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.feature-content ul li {
+    padding: 0.4rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.feature-content ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-green);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Services Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    margin-top: 2rem;
+}
+
+.service-item {
+    background: white;
+    padding: 1.8rem 1.4rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.service-item:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--primary-green-light);
+}
+
+.service-item h4 {
+    color: var(--primary-green-dark);
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.service-item p {
+    color: var(--text-medium);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Pet Features Grid */
+.pet-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.pet-feature {
+    background: white;
+    padding: 1.8rem 1.4rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow-medium);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.pet-feature:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--primary-green-light);
+}
+
+.pet-feature h4 {
+    color: var(--primary-green-dark);
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.pet-feature p {
+    color: var(--text-medium);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Pet Policies Styling */
+.pet-policies {
+    background: var(--background-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.pet-policies h4 {
+    color: var(--primary-green-dark);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.pet-policies ul {
+    list-style: none;
+    padding: 0;
+}
+
+.pet-policies ul li {
+    padding: 0.4rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+    color: var(--text-medium);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.pet-policies ul li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-green);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
 /* Special Offers Section */
 .offers-grid {
     display: grid;
@@ -1879,6 +2170,13 @@ button:focus {
 }
 
 /* Responsive Navigation */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .amenities-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.8rem;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-container {
         padding: 0 1rem;
@@ -2002,6 +2300,11 @@ button:focus {
         gap: 1.5rem;
     }
     
+    .facility-rules {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
     .reservation-methods {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
@@ -2011,6 +2314,8 @@ button:focus {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.3rem;
     }
+    
+    /* Tablet amenities grid - only 2 columns for tablets */
     
     .form-row {
         grid-template-columns: 1fr;
@@ -2034,10 +2339,32 @@ button:focus {
     
     .rules-grid,
     .safety-grid,
+    .facility-rules,
     .reservation-methods,
     .offers-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
+    }
+    
+    /* Mobile amenities grid - 1 column on very small screens */
+    .amenities-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .lake-features {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .pet-features-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
     }
     
     .included-grid,
