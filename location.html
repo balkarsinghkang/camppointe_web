@@ -106,37 +106,37 @@
         </section>
 
         <!-- Address & Contact -->
-        <section id="getting-here" class="address-contact">
-            <div class="container">
-                <div class="location-grid">
-                    <div class="address-info">
-                        <h2>📍 Our Address</h2>
-                        <div class="address-details">
-                            <h3>CampPointe Lake Texoma RV Park</h3>
-                            <p class="address-line">21847 Farm to Market Rd 901</p>
-                            <p class="address-line">Gordonville, TX 76245</p>
-                            
-                            <div class="coordinates">
-                                <h4>GPS Coordinates:</h4>
-                                <p><strong>Latitude:</strong> 33.8853° N</p>
-                                <p><strong>Longitude:</strong> 96.8642° W</p>
-                                <button class="btn-secondary copy-coords" onclick="copyCoordinates()">Copy Coordinates</button>
-                            </div>
+        <section id="getting-here" class="address-contact" style="padding: 4rem 0; background: #f8f9fa;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem;">
+                    <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e;">
+                        <h2 style="font-size: 1.8rem; color: #1e6b3e; margin-bottom: 1.5rem; font-weight: 600;">📍 Our Address</h2>
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="font-size: 1.3rem; color: #333; margin-bottom: 1rem; font-weight: 600;">CampPointe Lake Texoma RV Park</h3>
+                            <p style="margin: 0.5rem 0; font-size: 1.1rem; color: #555; font-weight: 500;">21847 Farm to Market Rd 901</p>
+                            <p style="margin: 0.5rem 0; font-size: 1.1rem; color: #555; font-weight: 500;">Gordonville, TX 76245</p>
+                        </div>
+                        
+                        <div style="background: #fafafa; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #1e6b3e;">
+                            <h4 style="color: #1e6b3e; font-size: 1.2rem; margin-bottom: 1rem;">GPS Coordinates:</h4>
+                            <p style="margin: 0.3rem 0; font-size: 1rem;"><strong>Latitude:</strong> 33.8853° N</p>
+                            <p style="margin: 0.3rem 0 1rem 0; font-size: 1rem;"><strong>Longitude:</strong> 96.8642° W</p>
+                            <button class="btn-secondary copy-coords" onclick="copyCoordinates()" style="background: #1e6b3e; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">Copy Coordinates</button>
                         </div>
                     </div>
 
-                    <div class="contact-quick">
-                        <h2>📞 Contact Information</h2>
-                        <div class="contact-details">
-                            <p><strong>Phone:</strong> <a href="tel:940-277-3435">940-277-3435</a></p>
-                            <p><strong>Email:</strong> <a href="mailto:info@camppointe.com">info@camppointe.com</a></p>
-                            
-                            <div class="office-hours">
-                                <h4>Office Hours:</h4>
-                                <p><strong>Daily:</strong> 8:00 AM - 8:00 PM</p>
-                                <p><strong>Check-in:</strong> 2:00 PM</p>
-                                <p><strong>Check-out:</strong> 12:00 PM</p>
-                            </div>
+                    <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e;">
+                        <h2 style="font-size: 1.8rem; color: #1e6b3e; margin-bottom: 1.5rem; font-weight: 600;">📞 Contact Information</h2>
+                        <div style="margin-bottom: 2rem;">
+                            <p style="margin: 0.8rem 0; font-size: 1.1rem;"><strong>Phone:</strong> <a href="tel:940-277-3435" style="color: #1e6b3e; text-decoration: none; font-weight: 600;">940-277-3435</a></p>
+                            <p style="margin: 0.8rem 0; font-size: 1.1rem;"><strong>Email:</strong> <a href="mailto:info@camppointe.com" style="color: #1e6b3e; text-decoration: none; font-weight: 600;">info@camppointe.com</a></p>
+                        </div>
+                        
+                        <div style="background: #fafafa; padding: 1.5rem; border-radius: 10px; border-left: 4px solid #1e6b3e;">
+                            <h4 style="color: #1e6b3e; font-size: 1.2rem; margin-bottom: 1rem;">Office Hours:</h4>
+                            <p style="margin: 0.3rem 0; font-size: 1rem;"><strong>Daily:</strong> 8:00 AM - 8:00 PM</p>
+                            <p style="margin: 0.3rem 0; font-size: 1rem;"><strong>Check-in:</strong> 2:00 PM</p>
+                            <p style="margin: 0.3rem 0; font-size: 1rem;"><strong>Check-out:</strong> 12:00 PM</p>
                         </div>
                     </div>
                 </div>
@@ -144,147 +144,137 @@
         </section>
 
         <!-- Interactive Map -->
-        <section class="interactive-location-map">
-            <div class="container">
-                <h2 class="section-title">🗺️ Find Us on the Map</h2>
-                <div class="map-container">
-                    <div class="map-placeholder" id="locationMap">
-                        <div class="map-content">
-                            <h3>Interactive Map</h3>
-                            <p>Detailed map integration coming soon</p>
-                            <p>For now, use GPS coordinates above or these mapping links:</p>
-                            <div class="map-links">
-                                <a href="https://maps.google.com/?q=33.8853,-96.8642" class="btn-secondary" target="_blank">Open in Google Maps</a>
-                                <a href="https://maps.apple.com/?q=33.8853,-96.8642" class="btn-secondary" target="_blank">Open in Apple Maps</a>
-                                <a href="https://www.waze.com/ul?ll=33.8853,-96.8642" class="btn-secondary" target="_blank">Open in Waze</a>
-                            </div>
-                        </div>
+        <section class="interactive-location-map" style="padding: 4rem 0; background: white;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: clamp(2.5rem, 4vw, 3rem); color: #1e6b3e; margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-weight: 700;">🗺️ Find Us on the Map</h2>
+                </div>
+                <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e;">
+                    <div style="background: #fafafa; padding: 3rem; border-radius: 10px; text-align: center; margin-bottom: 2rem;">
+                        <h3 style="color: #1e6b3e; font-size: 1.5rem; margin-bottom: 1rem;">Interactive Map</h3>
+                        <p style="color: #666; font-size: 1.1rem; margin-bottom: 1rem;">Detailed map integration coming soon</p>
+                        <p style="color: #666; font-size: 1rem; margin-bottom: 2rem;">For now, use GPS coordinates above or these mapping links:</p>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; justify-items: center;">
+                        <a href="https://maps.google.com/?q=33.8853,-96.8642" target="_blank" style="background: #1e6b3e; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; display: inline-block; min-width: 180px; text-align: center;">Open in Google Maps</a>
+                        <a href="https://maps.apple.com/?q=33.8853,-96.8642" target="_blank" style="background: #1e6b3e; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; display: inline-block; min-width: 180px; text-align: center;">Open in Apple Maps</a>
+                        <a href="https://www.waze.com/ul?ll=33.8853,-96.8642" target="_blank" style="background: #1e6b3e; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; display: inline-block; min-width: 180px; text-align: center;">Open in Waze</a>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Directions from Major Cities -->
-        <section class="major-city-directions">
-            <div class="container">
-                <h2 class="section-title">🛣️ Directions from Major Cities</h2>
-                <div class="directions-grid">
-                    <div class="direction-card">
-                        <div class="city-header">
-                            <h3>From Dallas, TX</h3>
-                            <span class="distance">~90 miles (1 hour 45 minutes)</span>
+        <section class="major-city-directions" style="padding: 4rem 0; background: #f8f9fa;">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <h2 style="font-size: clamp(2.5rem, 4vw, 3rem); color: #1e6b3e; margin-bottom: 1rem; font-family: 'Playfair Display', serif; font-weight: 700;">🛣️ Directions from Major Cities</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                    <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h3 style="font-size: 1.4rem; color: #1e6b3e; margin-bottom: 0.5rem; font-weight: 600;">From Dallas, TX</h3>
+                            <span style="background: #f0f8f0; color: #1e6b3e; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">~90 miles (1 hour 45 minutes)</span>
                         </div>
-                        <div class="route-details">
-                            <ol>
-                                <li>Take US-75 North from Dallas</li>
-                                <li>Continue on US-75 North for about 80 miles</li>
-                                <li>Take Exit 69 for FM-901 toward Gordonville</li>
-                                <li>Turn right (east) on FM-901</li>
-                                <li>Continue for 8 miles to CampPointe on the right</li>
-                            </ol>
-                            <div class="route-notes">
-                                <p><strong>Note:</strong> Well-marked exits, RV-friendly route with wide lanes</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="direction-card">
-                        <div class="city-header">
-                            <h3>From Oklahoma City, OK</h3>
-                            <span class="distance">~120 miles (2 hours 15 minutes)</span>
-                        </div>
-                        <div class="route-details">
-                            <ol>
-                                <li>Take I-35 South from Oklahoma City</li>
-                                <li>Continue south for about 90 miles</li>
-                                <li>Take Exit 1C for US-377 South toward Whitesboro</li>
-                                <li>Follow US-377 South for 15 miles</li>
-                                <li>Turn left on FM-901 East</li>
-                                <li>Continue 12 miles to CampPointe</li>
-                            </ol>
-                            <div class="route-notes">
-                                <p><strong>Note:</strong> Interstate highway most of the way, easy RV access</p>
-                            </div>
+                        <ol style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take US-75 North from Dallas</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Continue on US-75 North for about 80 miles</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take Exit 69 for FM-901 toward Gordonville</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Turn right (east) on FM-901</li>
+                            <li style="margin-bottom: 0; line-height: 1.4;">Continue for 8 miles to CampPointe on the right</li>
+                        </ol>
+                        <div style="background: #fafafa; padding: 1rem; border-radius: 8px; border-left: 4px solid #1e6b3e;">
+                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.4;"><strong>Note:</strong> Well-marked exits, RV-friendly route with wide lanes</p>
                         </div>
                     </div>
 
-                    <div class="direction-card">
-                        <div class="city-header">
-                            <h3>From Fort Worth, TX</h3>
-                            <span class="distance">~95 miles (1 hour 50 minutes)</span>
+                    <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h3 style="font-size: 1.4rem; color: #1e6b3e; margin-bottom: 0.5rem; font-weight: 600;">From Oklahoma City, OK</h3>
+                            <span style="background: #f0f8f0; color: #1e6b3e; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">~120 miles (2 hours 15 minutes)</span>
                         </div>
-                        <div class="route-details">
-                            <ol>
-                                <li>Take I-35W North from Fort Worth</li>
-                                <li>Merge onto I-35E North</li>
-                                <li>Continue to US-75 North</li>
-                                <li>Follow US-75 North for 60 miles</li>
-                                <li>Take Exit 69 for FM-901</li>
-                                <li>Turn right and continue 8 miles to park</li>
-                            </ol>
-                            <div class="route-notes">
-                                <p><strong>Note:</strong> Major highways entire route, big rig accessible</p>
-                            </div>
+                        <ol style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take I-35 South from Oklahoma City</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Continue south for about 90 miles</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take Exit 1C for US-377 South toward Whitesboro</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Follow US-377 South for 15 miles</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Turn left on FM-901 East</li>
+                            <li style="margin-bottom: 0; line-height: 1.4;">Continue 12 miles to CampPointe</li>
+                        </ol>
+                        <div style="background: #fafafa; padding: 1rem; border-radius: 8px; border-left: 4px solid #1e6b3e;">
+                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.4;"><strong>Note:</strong> Interstate highway most of the way, easy RV access</p>
                         </div>
                     </div>
 
-                    <div class="direction-card">
-                        <div class="city-header">
-                            <h3>From Austin, TX</h3>
-                            <span class="distance">~200 miles (3 hours 30 minutes)</span>
+                    <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h3 style="font-size: 1.4rem; color: #1e6b3e; margin-bottom: 0.5rem; font-weight: 600;">From Fort Worth, TX</h3>
+                            <span style="background: #f0f8f0; color: #1e6b3e; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">~95 miles (1 hour 50 minutes)</span>
                         </div>
-                        <div class="route-details">
-                            <ol>
-                                <li>Take I-35 North from Austin</li>
-                                <li>Continue north through Dallas area</li>
-                                <li>Merge onto US-75 North</li>
-                                <li>Take Exit 69 for FM-901</li>
-                                <li>Turn right on FM-901 East</li>
-                                <li>Continue 8 miles to CampPointe</li>
-                            </ol>
-                            <div class="route-notes">
-                                <p><strong>Note:</strong> Longest drive but straightforward interstate route</p>
-                            </div>
+                        <ol style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take I-35W North from Fort Worth</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Merge onto I-35E North</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Continue to US-75 North</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Follow US-75 North for 60 miles</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take Exit 69 for FM-901</li>
+                            <li style="margin-bottom: 0; line-height: 1.4;">Turn right and continue 8 miles to park</li>
+                        </ol>
+                        <div style="background: #fafafa; padding: 1rem; border-radius: 8px; border-left: 4px solid #1e6b3e;">
+                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.4;"><strong>Note:</strong> Major highways entire route, big rig accessible</p>
                         </div>
                     </div>
 
-                    <div class="direction-card">
-                        <div class="city-header">
-                            <h3>From Tulsa, OK</h3>
-                            <span class="distance">~160 miles (2 hours 45 minutes)</span>
+                    <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h3 style="font-size: 1.4rem; color: #1e6b3e; margin-bottom: 0.5rem; font-weight: 600;">From Austin, TX</h3>
+                            <span style="background: #f0f8f0; color: #1e6b3e; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">~200 miles (3 hours 30 minutes)</span>
                         </div>
-                        <div class="route-details">
-                            <ol>
-                                <li>Take US-75 South from Tulsa</li>
-                                <li>Continue south for about 130 miles</li>
-                                <li>Merge with US-69 South</li>
-                                <li>Take US-377 South toward Whitesboro</li>
-                                <li>Turn left on FM-901 East</li>
-                                <li>Continue 12 miles to park entrance</li>
-                            </ol>
-                            <div class="route-notes">
-                                <p><strong>Note:</strong> Scenic route through Oklahoma hills</p>
-                            </div>
+                        <ol style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take I-35 North from Austin</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Continue north through Dallas area</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Merge onto US-75 North</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take Exit 69 for FM-901</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Turn right on FM-901 East</li>
+                            <li style="margin-bottom: 0; line-height: 1.4;">Continue 8 miles to CampPointe</li>
+                        </ol>
+                        <div style="background: #fafafa; padding: 1rem; border-radius: 8px; border-left: 4px solid #1e6b3e;">
+                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.4;"><strong>Note:</strong> Longest drive but straightforward interstate route</p>
                         </div>
                     </div>
 
-                    <div class="direction-card">
-                        <div class="city-header">
-                            <h3>From Houston, TX</h3>
-                            <span class="distance">~290 miles (4 hours 45 minutes)</span>
+                    <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h3 style="font-size: 1.4rem; color: #1e6b3e; margin-bottom: 0.5rem; font-weight: 600;">From Tulsa, OK</h3>
+                            <span style="background: #f0f8f0; color: #1e6b3e; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">~160 miles (2 hours 45 minutes)</span>
                         </div>
-                        <div class="route-details">
-                            <ol>
-                                <li>Take I-45 North from Houston</li>
-                                <li>Merge onto I-35E North in Dallas</li>
-                                <li>Continue to US-75 North</li>
-                                <li>Take Exit 69 for FM-901</li>
-                                <li>Turn right on FM-901 East</li>
-                                <li>Continue 8 miles to CampPointe</li>
-                            </ol>
-                            <div class="route-notes">
-                                <p><strong>Note:</strong> Long haul but excellent highway conditions</p>
-                            </div>
+                        <ol style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take US-75 South from Tulsa</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Continue south for about 130 miles</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Merge with US-69 South</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take US-377 South toward Whitesboro</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Turn left on FM-901 East</li>
+                            <li style="margin-bottom: 0; line-height: 1.4;">Continue 12 miles to park entrance</li>
+                        </ol>
+                        <div style="background: #fafafa; padding: 1rem; border-radius: 8px; border-left: 4px solid #1e6b3e;">
+                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.4;"><strong>Note:</strong> Scenic route through Oklahoma hills</p>
+                        </div>
+                    </div>
+
+                    <div style="background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 8px 25px rgba(30, 107, 62, 0.15); border-left: 5px solid #1e6b3e;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h3 style="font-size: 1.4rem; color: #1e6b3e; margin-bottom: 0.5rem; font-weight: 600;">From Houston, TX</h3>
+                            <span style="background: #f0f8f0; color: #1e6b3e; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;">~290 miles (4 hours 45 minutes)</span>
+                        </div>
+                        <ol style="margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take I-45 North from Houston</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Merge onto I-35E North in Dallas</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Continue to US-75 North</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Take Exit 69 for FM-901</li>
+                            <li style="margin-bottom: 0.5rem; line-height: 1.4;">Turn right on FM-901 East</li>
+                            <li style="margin-bottom: 0; line-height: 1.4;">Continue 8 miles to CampPointe</li>
+                        </ol>
+                        <div style="background: #fafafa; padding: 1rem; border-radius: 8px; border-left: 4px solid #1e6b3e;">
+                            <p style="margin: 0; font-size: 0.95rem; line-height: 1.4;"><strong>Note:</strong> Long haul but excellent highway conditions</p>
                         </div>
                     </div>
                 </div>
