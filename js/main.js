@@ -1,7 +1,82 @@
 // CampPointe Lake Texoma RV Park - Main JavaScript
 
+// Load header from external file
+async function loadHeader() {
+    try {
+        const response = await fetch('/includes/header.html');
+        const headerHTML = await response.text();
+        document.getElementById('header-placeholder').innerHTML = headerHTML;
+        
+        // Set active class on current page
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Initialize mobile menu after header is loaded
+        initializeMobileMenu();
+    } catch (error) {
+        console.error('Error loading header:', error);
+    }
+}
+
+// Initialize mobile menu functionality
+function initializeMobileMenu() {
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (!hamburger || !navMenu) return;
+    
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+    
+    // Dropdown functionality
+    const dropdownItems = document.querySelectorAll('.nav-item.dropdown');
+    
+    dropdownItems.forEach(dropdown => {
+        const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+        
+        if (window.innerWidth <= 768) {
+            dropdownToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdown.classList.toggle('mobile-open');
+            });
+        }
+        
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+                dropdown.classList.remove('mobile-open');
+            }
+        });
+    });
+    
+    // Close mobile menu when clicking on links
+    document.querySelectorAll('.nav-link, .dropdown-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if (!link.classList.contains('dropdown-toggle')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                dropdownItems.forEach(dropdown => {
+                    dropdown.classList.remove('mobile-open');
+                });
+            }
+        });
+    });
+}
+
+// Load header on page load
+if (document.getElementById('header-placeholder')) {
+    loadHeader();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Navigation Toggle
+    // Mobile Navigation Toggle (for pages without placeholder)
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
 
