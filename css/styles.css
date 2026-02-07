@@ -579,6 +579,9 @@ p {
     border: 1px solid rgba(30, 107, 62, 0.1);
     position: relative;
     overflow: hidden;
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 .feature-card::before {

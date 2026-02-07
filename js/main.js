@@ -192,6 +192,56 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call preload function
     preloadCriticalResources();
 
+    // Load amenities dynamically from amenities.html
+    async function loadAmenitiesFromPage() {
+        // Only run on homepage
+        const featuresGrid = document.querySelector('#features .features-grid');
+        if (!featuresGrid) return;
+
+        try {
+            const response = await fetch('amenities.html');
+            const html = await response.text();
+            
+            // Create a temporary DOM element to parse the HTML
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            // Get all amenity cards from the amenities page
+            const amenityCards = doc.querySelectorAll('.amenity-card');
+            
+            // Clear existing feature cards
+            featuresGrid.innerHTML = '';
+            
+            // Convert amenity cards to feature cards (limit to first 8 for homepage)
+            const cardsToShow = Array.from(amenityCards).slice(0, 8);
+            
+            cardsToShow.forEach(amenityCard => {
+                const icon = amenityCard.querySelector('.amenity-icon')?.textContent || '✓';
+                const title = amenityCard.querySelector('h3')?.textContent || '';
+                const description = amenityCard.querySelector('p')?.textContent || '';
+                
+                // Create feature card
+                const featureCard = document.createElement('a');
+                featureCard.href = 'amenities.html';
+                featureCard.className = 'feature-card';
+                featureCard.innerHTML = `
+                    <div class="feature-icon">${icon}</div>
+                    <h3>${title}</h3>
+                    <p>${description}</p>
+                `;
+                
+                featuresGrid.appendChild(featureCard);
+            });
+            
+        } catch (error) {
+            console.error('Error loading amenities:', error);
+            // Keep existing static content if fetch fails
+        }
+    }
+
+    // Load amenities on homepage
+    loadAmenitiesFromPage();
+
     // Error handling for external resources
     window.addEventListener('error', function(e) {
         if (e.target.tagName === 'IMG') {
