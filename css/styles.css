@@ -110,6 +110,8 @@ body {
     font-size: 1rem; /* Use relative sizing */
     /* Prevent horizontal scrolling */
     overflow-x: hidden;
+    /* Add padding for fixed header */
+    padding-top: 80px;
 }
 
 .container {
@@ -233,9 +235,13 @@ p {
 .header {
     background: white;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
     z-index: 1000;
+    transition: transform 0.3s ease;
 }
 
 .navbar {
@@ -389,8 +395,8 @@ p {
 /* CTA Book Now Button Enhancement */
 .cta-book-now {
     background: var(--gradient-primary);
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 10px 15px;
+    border-radius: 20px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
