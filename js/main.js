@@ -3,7 +3,8 @@
 // Load header from external file
 async function loadHeader() {
     try {
-        const response = await fetch('/header.html');
+        // Use relative path for GitHub Pages compatibility
+        const response = await fetch('header.html');
         const headerHTML = await response.text();
         document.getElementById('header-placeholder').innerHTML = headerHTML;
         
