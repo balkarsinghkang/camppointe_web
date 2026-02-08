@@ -1020,7 +1020,7 @@ p {
 
     .nav-menu {
         position: fixed;
-        left: -100%;
+        left: 100%;
         top: 80px;
         flex-direction: column;
         background-color: white;
