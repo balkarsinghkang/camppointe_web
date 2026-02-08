@@ -3,8 +3,12 @@
 // Load header from external file
 async function loadHeader() {
     try {
-        // Use relative path for GitHub Pages compatibility
-        const response = await fetch('header.html');
+        // Determine the base path for GitHub Pages or local development
+        const basePath = window.location.hostname === 'balkarsinghkang.github.io' 
+            ? '/camppointe_web/' 
+            : '/';
+        
+        const response = await fetch(`${basePath}header.html`);
         const headerHTML = await response.text();
         document.getElementById('header-placeholder').innerHTML = headerHTML;
         
