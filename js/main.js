@@ -3,7 +3,7 @@
 // Load header from external file
 async function loadHeader() {
     try {
-        const response = await fetch('/includes/header.html');
+        const response = await fetch('/header.html');
         const headerHTML = await response.text();
         document.getElementById('header-placeholder').innerHTML = headerHTML;
         
