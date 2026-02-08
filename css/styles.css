@@ -99,7 +99,7 @@ img[src*="static.wix"]+*::before {
 html {
     scroll-behavior: smooth;
     /* Enable responsive font scaling */
-    font-size: clamp(14px, 2.5vw, 18px);
+    font-size: clamp(14px, 2.5vw, 12px);
 }
 
 body {
@@ -172,7 +172,7 @@ p {
 .btn-primary,
 .btn-secondary {
     display: inline-block;
-    padding: 16px 32px;
+    padding: 16px 20px;
     /* Larger padding for easier clicking */
     border-radius: 8px;
     /* Slightly rounded for modern feel */
@@ -315,29 +315,29 @@ p {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: clamp(0.8rem, 2vw, 1.8rem);
-    /* Fluid gap between menu items */
+    gap: clamp(0.5rem, 1vw, 0.8rem);
+    /* Optimized gap for single-line layout */
     align-items: center;
     flex: 1;
     justify-content: center;
-    margin: 0 clamp(1rem, 3vw, 3rem);
-    /* Fluid margins */
-    flex-wrap: wrap;
-    /* Allow wrapping on smaller screens */
+    margin: 0 clamp(0.5rem, 1.5vw, 1rem);
+    /* Reduced margins for more space */
+    flex-wrap: nowrap;
+    /* Keep all items on one line in desktop */
 }
 
 .nav-link {
     text-decoration: none;
     color: var(--text-medium);
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.3s ease;
     display: flex;
     align-items: center;
-    padding: 0.5rem clamp(0.3rem, 1vw, 0.8rem);
-    /* Fluid padding */
+    padding: 0.5rem clamp(0.2rem, 0.6vw, 0.5rem);
+    /* Compact padding for single-line layout */
     white-space: nowrap;
-    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-    /* Fluid font size */
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    /* Increased font size for better readability */
 }
 
 .nav-item {
@@ -451,6 +451,9 @@ p {
 
 .nav-cta-desktop {
     display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap; /* Prevent wrapping */
 }
 
 .phone-number {
@@ -484,6 +487,20 @@ p {
     display: none;
     flex-direction: column;
     cursor: pointer;
+}
+
+.nav-cta-desktop .phone-number {
+    white-space: nowrap;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.nav-cta-desktop .cta-book-now {
+    white-space: nowrap;
+    flex-shrink: 0; /* Prevent shrinking */
+    padding: 10px 15px;
+    min-width: auto;
+    max-width: fit-content;
+    font-size: 1rem;
 }
 
 .bar {
@@ -973,7 +990,7 @@ p {
     }
 
     .nav-container {
-        padding: 0 25px;
+        padding: 0 20px;
     }
 
     .nav-menu {
@@ -1331,11 +1348,6 @@ p {
 .services-image,
 .location-map {
     order: -1;
-}
-
-.nav-cta {
-    flex-direction: column;
-    gap: 0.5rem;
 }
 
 .cta-buttons {
