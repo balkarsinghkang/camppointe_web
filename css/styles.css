@@ -1038,7 +1038,7 @@ p {
     .nav-menu {
         position: fixed;
         left: 100%;
-        top: 80px;
+        top: 120px;
         flex-direction: column;
         background-color: white;
         width: 100%;
@@ -1051,7 +1051,7 @@ p {
         margin: 0;
         justify-content: flex-start;
         gap: 0;
-        max-height: calc(100vh - 80px);
+        max-height: calc(100vh - 120px);
         overflow-y: auto;
         visibility: hidden;
         opacity: 0;
