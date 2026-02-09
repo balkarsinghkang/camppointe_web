@@ -113,7 +113,7 @@ body {
     /* Prevent horizontal scrolling */
     overflow-x: hidden;
     /* Add padding for fixed header */
-    padding-top: 80px;
+    padding-top: 100px;
 }
 
 .container {
@@ -1105,6 +1105,7 @@ p {
         visibility: visible;
         max-height: 500px;
         padding: 0.5rem 0;
+        padding-top: 120px;
     }
 
     .dropdown-link {
