@@ -2282,6 +2282,7 @@ button:focus {
     .prohibited-activities {
         flex: 1 1 100% !important;
         width: 100% !important;
+        max-width: 100% !important;
     }
 
     .prohibited-grid {
@@ -2827,6 +2828,7 @@ button:focus {
     .prohibited-activities {
         flex: 1 1 100% !important;
         width: 100% !important;
+        max-width: 100% !important;
     }
 
     .prohibited-grid {
@@ -2838,10 +2840,6 @@ button:focus {
         flex: 1 1 100% !important;
         width: 100% !important;
         min-width: 100% !important;
-    }
-
-    .prohibited-item {
-        flex: 1 1 100% !important;
     }
 
     .checkout-content {
