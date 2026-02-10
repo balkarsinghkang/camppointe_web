@@ -2254,17 +2254,17 @@ button:focus {
 /* 2 columns for tablets */
 @media (max-width: 768px) {
     .amenities-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 
     .lake-features {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr !important;
         gap: 1.5rem;
     }
 
     .services-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 
@@ -2284,7 +2284,14 @@ button:focus {
     }
 
     .pet-features-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .emergency-grid,
+    .included-grid,
+    .fees-grid {
+        grid-template-columns: 1fr;
         gap: 1.5rem;
     }
 }
@@ -2720,22 +2727,22 @@ button:focus {
 }
 
 .rules-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.5rem;
 }
 
 .safety-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.5rem;
 }
 
 .facility-rules {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.5rem;
 }
 
 .checkout-content {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.5rem;
 }
 
@@ -2745,12 +2752,12 @@ button:focus {
 }
 
 .reservation-methods {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.5rem;
 }
 
 .offers-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1.3rem;
 }
 
@@ -2781,7 +2788,10 @@ button:focus {
     .facility-rules,
     .policy-details,
     .reservation-methods,
-    .offers-grid {
+    .offers-grid,
+    .emergency-grid,
+    .included-grid,
+    .fees-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
@@ -2806,7 +2816,7 @@ button:focus {
     }
 
     .checkout-content {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         gap: 0.8rem;
     }
 
