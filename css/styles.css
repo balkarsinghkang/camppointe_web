@@ -1109,7 +1109,7 @@ p {
         visibility: visible;
         max-height: 500px;
         padding: 0.5rem 0;
-        padding-top: 120px;
+        padding-top: 0.5rem;
     }
 
     .dropdown-link {
