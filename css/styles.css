@@ -2294,6 +2294,11 @@ button:focus {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+
+    .contact-methods {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+    }
 }
 
 .amenity-card {
@@ -2844,5 +2849,10 @@ button:focus {
     .included-grid,
     .emergency-grid {
         grid-template-columns: 1fr;
+    }
+
+    .contact-methods {
+        grid-template-columns: 1fr !important;
+        gap: 1rem;
     }
 }
