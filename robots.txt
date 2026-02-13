@@ -1,23 +1,9 @@
 User-agent: *
-Allow: /
 
-# Sitemap location
-Sitemap: https://balkarsinghkang.github.io/camppointe_web/sitemap.xml
-
-# Disallow development and documentation directories
 Disallow: /website-base/
 Disallow: /seo-optimization/
 Disallow: /content-strategy/
 Disallow: /performance/
 Disallow: /wix-customizations/
 
-# Allow important files
-Allow: /css/
-Allow: /js/
-Allow: /images/
-Allow: /*.html$
-Allow: /*.css$
-Allow: /*.js$
-
-# Crawl-delay for respectful crawling
-Crawl-delay: 1
+Sitemap: https://balkarsinghkang.github.io/camppointe_web/sitemap.xml
