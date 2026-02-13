@@ -1,0 +1,664 @@
+name: SEO Audit on Commit
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'copilot/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  seo-audit:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Setup Ruby for Jekyll
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+          bundler-cache: false
+          
+      - name: Install Jekyll and dependencies
+        run: |
+          gem install jekyll bundler
+          bundle init
+          echo 'gem "jekyll"' >> Gemfile
+          echo 'gem "jekyll-sitemap"' >> Gemfile
+          echo 'gem "jekyll-seo-tag"' >> Gemfile
+          bundle install
+          
+      - name: Build Jekyll site
+        run: |
+          bundle exec jekyll build --baseurl ""
+          
+      - name: Install SEO analysis tools
+        run: |
+          npm install -g @lhci/cli@0.13.x
+          npm install -g lighthouse
+          npm install -g broken-link-checker
+          
+      - name: Create SEO crawler script
+        run: |
+          cat > seo-crawler.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          const { JSDOM } = require('jsdom');
+          
+          // Configuration
+          const SITE_DIR = '_site';
+          const OUTPUT_FILE = 'seo-report.md';
+          
+          // SEO Rules and Weights
+          const SEO_RULES = {
+            CRITICAL: ['missing_title', 'missing_meta_description', 'missing_h1', 'duplicate_title'],
+            HIGH: ['title_too_long', 'meta_desc_too_long', 'missing_canonical', 'missing_alt_tags'],
+            MEDIUM: ['missing_og_tags', 'missing_structured_data', 'multiple_h1', 'broken_internal_links'],
+            LOW: ['missing_lang_attr', 'heading_structure', 'image_optimization']
+          };
+          
+          class SEOCrawler {
+            constructor() {
+              this.results = {
+                pages: [],
+                summary: {
+                  total_pages: 0,
+                  critical_issues: 0,
+                  high_issues: 0,
+                  medium_issues: 0,
+                  low_issues: 0,
+                  total_issues: 0
+                }
+              };
+              this.seenTitles = new Set();
+              this.seenDescriptions = new Set();
+            }
+            
+            async crawl() {
+              console.log('🔍 Starting SEO Audit...\n');
+              
+              const htmlFiles = this.findHTMLFiles(SITE_DIR);
+              this.results.summary.total_pages = htmlFiles.length;
+              
+              for (const file of htmlFiles) {
+                console.log(`Analyzing: ${file}`);
+                const analysis = await this.analyzePage(file);
+                this.results.pages.push(analysis);
+                
+                // Update summary
+                this.results.summary.critical_issues += analysis.issues.critical.length;
+                this.results.summary.high_issues += analysis.issues.high.length;
+                this.results.summary.medium_issues += analysis.issues.medium.length;
+                this.results.summary.low_issues += analysis.issues.low.length;
+              }
+              
+              this.results.summary.total_issues = 
+                this.results.summary.critical_issues +
+                this.results.summary.high_issues +
+                this.results.summary.medium_issues +
+                this.results.summary.low_issues;
+              
+              this.generateReport();
+              console.log('\n✅ SEO Audit Complete!');
+            }
+            
+            findHTMLFiles(dir, fileList = []) {
+              const files = fs.readdirSync(dir);
+              
+              files.forEach(file => {
+                const filePath = path.join(dir, file);
+                const stat = fs.statSync(filePath);
+                
+                if (stat.isDirectory()) {
+                  this.findHTMLFiles(filePath, fileList);
+                } else if (file.endsWith('.html')) {
+                  fileList.push(filePath);
+                }
+              });
+              
+              return fileList;
+            }
+            
+            async analyzePage(filePath) {
+              const content = fs.readFileSync(filePath, 'utf8');
+              const dom = new JSDOM(content);
+              const document = dom.window.document;
+              
+              const analysis = {
+                file: filePath.replace(SITE_DIR + '/', ''),
+                url: this.getPageURL(filePath),
+                issues: {
+                  critical: [],
+                  high: [],
+                  medium: [],
+                  low: []
+                },
+                metadata: {}
+              };
+              
+              // Extract metadata
+              analysis.metadata.title = this.getTitle(document);
+              analysis.metadata.description = this.getMetaDescription(document);
+              analysis.metadata.canonical = this.getCanonical(document);
+              analysis.metadata.h1_count = document.querySelectorAll('h1').length;
+              analysis.metadata.h1_text = Array.from(document.querySelectorAll('h1')).map(h => h.textContent.trim());
+              analysis.metadata.word_count = this.getWordCount(document);
+              analysis.metadata.images_without_alt = this.getImagesWithoutAlt(document);
+              
+              // Run checks
+              this.checkTitle(document, analysis);
+              this.checkMetaDescription(document, analysis);
+              this.checkH1Tags(document, analysis);
+              this.checkCanonical(document, analysis);
+              this.checkImages(document, analysis);
+              this.checkStructuredData(document, analysis);
+              this.checkOpenGraph(document, analysis);
+              this.checkLangAttribute(document, analysis);
+              this.checkHeadingHierarchy(document, analysis);
+              
+              return analysis;
+            }
+            
+            getPageURL(filePath) {
+              return filePath.replace(SITE_DIR, '').replace('/index.html', '/');
+            }
+            
+            getTitle(document) {
+              const title = document.querySelector('title');
+              return title ? title.textContent.trim() : null;
+            }
+            
+            getMetaDescription(document) {
+              const meta = document.querySelector('meta[name="description"]');
+              return meta ? meta.getAttribute('content').trim() : null;
+            }
+            
+            getCanonical(document) {
+              const canonical = document.querySelector('link[rel="canonical"]');
+              return canonical ? canonical.getAttribute('href') : null;
+            }
+            
+            getWordCount(document) {
+              const body = document.querySelector('body');
+              if (!body) return 0;
+              const text = body.textContent.replace(/\s+/g, ' ').trim();
+              return text.split(' ').length;
+            }
+            
+            getImagesWithoutAlt(document) {
+              const images = document.querySelectorAll('img');
+              return Array.from(images).filter(img => !img.getAttribute('alt')).length;
+            }
+            
+            checkTitle(document, analysis) {
+              const title = this.getTitle(document);
+              
+              if (!title) {
+                analysis.issues.critical.push({
+                  rule: 'missing_title',
+                  message: 'Page is missing a title tag'
+                });
+              } else {
+                if (this.seenTitles.has(title)) {
+                  analysis.issues.critical.push({
+                    rule: 'duplicate_title',
+                    message: `Duplicate title: "${title}"`
+                  });
+                }
+                this.seenTitles.add(title);
+                
+                if (title.length > 60) {
+                  analysis.issues.high.push({
+                    rule: 'title_too_long',
+                    message: `Title is ${title.length} characters (recommended: 50-60). Title: "${title}"`
+                  });
+                } else if (title.length < 30) {
+                  analysis.issues.high.push({
+                    rule: 'title_too_short',
+                    message: `Title is ${title.length} characters (recommended: 50-60). Consider adding more descriptive text.`
+                  });
+                }
+              }
+            }
+            
+            checkMetaDescription(document, analysis) {
+              const description = this.getMetaDescription(document);
+              
+              if (!description) {
+                analysis.issues.critical.push({
+                  rule: 'missing_meta_description',
+                  message: 'Page is missing a meta description'
+                });
+              } else {
+                if (this.seenDescriptions.has(description)) {
+                  analysis.issues.high.push({
+                    rule: 'duplicate_description',
+                    message: `Duplicate meta description: "${description}"`
+                  });
+                }
+                this.seenDescriptions.add(description);
+                
+                if (description.length > 160) {
+                  analysis.issues.high.push({
+                    rule: 'meta_desc_too_long',
+                    message: `Meta description is ${description.length} characters (recommended: 150-160)`
+                  });
+                } else if (description.length < 120) {
+                  analysis.issues.medium.push({
+                    rule: 'meta_desc_too_short',
+                    message: `Meta description is ${description.length} characters (recommended: 150-160). Consider adding more details.`
+                  });
+                }
+              }
+            }
+            
+            checkH1Tags(document, analysis) {
+              const h1Count = analysis.metadata.h1_count;
+              
+              if (h1Count === 0) {
+                analysis.issues.critical.push({
+                  rule: 'missing_h1',
+                  message: 'Page is missing an H1 tag'
+                });
+              } else if (h1Count > 1) {
+                analysis.issues.medium.push({
+                  rule: 'multiple_h1',
+                  message: `Page has ${h1Count} H1 tags (recommended: 1). H1s: ${analysis.metadata.h1_text.join(', ')}`
+                });
+              }
+            }
+            
+            checkCanonical(document, analysis) {
+              if (!this.getCanonical(document)) {
+                analysis.issues.high.push({
+                  rule: 'missing_canonical',
+                  message: 'Page is missing a canonical URL'
+                });
+              }
+            }
+            
+            checkImages(document, analysis) {
+              const imagesWithoutAlt = analysis.metadata.images_without_alt;
+              
+              if (imagesWithoutAlt > 0) {
+                analysis.issues.high.push({
+                  rule: 'missing_alt_tags',
+                  message: `${imagesWithoutAlt} image(s) missing alt attributes (accessibility and SEO issue)`
+                });
+              }
+            }
+            
+            checkStructuredData(document, analysis) {
+              const structuredData = document.querySelectorAll('script[type="application/ld+json"]');
+              
+              if (structuredData.length === 0) {
+                analysis.issues.medium.push({
+                  rule: 'missing_structured_data',
+                  message: 'Page is missing structured data (Schema.org markup)'
+                });
+              }
+            }
+            
+            checkOpenGraph(document, analysis) {
+              const ogTitle = document.querySelector('meta[property="og:title"]');
+              const ogDescription = document.querySelector('meta[property="og:description"]');
+              const ogImage = document.querySelector('meta[property="og:image"]');
+              
+              const missing = [];
+              if (!ogTitle) missing.push('og:title');
+              if (!ogDescription) missing.push('og:description');
+              if (!ogImage) missing.push('og:image');
+              
+              if (missing.length > 0) {
+                analysis.issues.medium.push({
+                  rule: 'missing_og_tags',
+                  message: `Missing Open Graph tags: ${missing.join(', ')}`
+                });
+              }
+            }
+            
+            checkLangAttribute(document, analysis) {
+              const html = document.querySelector('html');
+              if (!html || !html.getAttribute('lang')) {
+                analysis.issues.low.push({
+                  rule: 'missing_lang_attr',
+                  message: 'HTML tag is missing lang attribute'
+                });
+              }
+            }
+            
+            checkHeadingHierarchy(document, analysis) {
+              const headings = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+              let previousLevel = 0;
+              let hasIssue = false;
+              
+              for (const heading of headings) {
+                const level = parseInt(heading.tagName.substring(1));
+                if (level - previousLevel > 1) {
+                  hasIssue = true;
+                  break;
+                }
+                previousLevel = level;
+              }
+              
+              if (hasIssue) {
+                analysis.issues.low.push({
+                  rule: 'heading_structure',
+                  message: 'Heading hierarchy is not sequential (e.g., H1 -> H3 without H2)'
+                });
+              }
+            }
+            
+            generateReport() {
+              let report = '# SEO Audit Report\n\n';
+              report += `**Generated:** ${new Date().toISOString()}\n\n`;
+              
+              // Summary
+              report += '## 📊 Summary\n\n';
+              report += `- **Total Pages Analyzed:** ${this.results.summary.total_pages}\n`;
+              report += `- **Total Issues Found:** ${this.results.summary.total_issues}\n`;
+              report += `  - 🔴 Critical: ${this.results.summary.critical_issues}\n`;
+              report += `  - 🟠 High: ${this.results.summary.high_issues}\n`;
+              report += `  - 🟡 Medium: ${this.results.summary.medium_issues}\n`;
+              report += `  - 🔵 Low: ${this.results.summary.low_issues}\n\n`;
+              
+              // Score
+              const maxScore = this.results.summary.total_pages * 100;
+              const deductions = 
+                (this.results.summary.critical_issues * 10) +
+                (this.results.summary.high_issues * 5) +
+                (this.results.summary.medium_issues * 3) +
+                (this.results.summary.low_issues * 1);
+              const score = Math.max(0, Math.round((1 - (deductions / maxScore)) * 100));
+              
+              report += `### 🎯 SEO Score: ${score}/100\n\n`;
+              
+              if (score >= 90) {
+                report += '✅ **Excellent!** Your site has strong SEO fundamentals.\n\n';
+              } else if (score >= 70) {
+                report += '⚠️ **Good, but needs improvement.** Address the issues below to boost your SEO.\n\n';
+              } else if (score >= 50) {
+                report += '🔶 **Needs attention.** Several important SEO issues need to be fixed.\n\n';
+              } else {
+                report += '🚨 **Critical issues found.** Immediate action required to improve SEO.\n\n';
+              }
+              
+              // Issues by severity
+              if (this.results.summary.critical_issues > 0) {
+                report += '## 🔴 Critical Issues\n\n';
+                this.results.pages.forEach(page => {
+                  if (page.issues.critical.length > 0) {
+                    report += `### ${page.file}\n\n`;
+                    page.issues.critical.forEach(issue => {
+                      report += `- **${issue.rule}**: ${issue.message}\n`;
+                    });
+                    report += '\n';
+                  }
+                });
+              }
+              
+              if (this.results.summary.high_issues > 0) {
+                report += '## 🟠 High Priority Issues\n\n';
+                this.results.pages.forEach(page => {
+                  if (page.issues.high.length > 0) {
+                    report += `### ${page.file}\n\n`;
+                    page.issues.high.forEach(issue => {
+                      report += `- **${issue.rule}**: ${issue.message}\n`;
+                    });
+                    report += '\n';
+                  }
+                });
+              }
+              
+              if (this.results.summary.medium_issues > 0) {
+                report += '## 🟡 Medium Priority Issues\n\n';
+                this.results.pages.forEach(page => {
+                  if (page.issues.medium.length > 0) {
+                    report += `### ${page.file}\n\n`;
+                    page.issues.medium.forEach(issue => {
+                      report += `- **${issue.rule}**: ${issue.message}\n`;
+                    });
+                    report += '\n';
+                  }
+                });
+              }
+              
+              // Recommendations
+              report += '## 💡 Recommendations\n\n';
+              
+              if (this.results.summary.critical_issues > 0) {
+                report += '### Immediate Actions Required:\n';
+                report += '1. Add missing title tags to all pages\n';
+                report += '2. Add missing meta descriptions to all pages\n';
+                report += '3. Ensure every page has exactly one H1 tag\n';
+                report += '4. Remove duplicate titles across pages\n\n';
+              }
+              
+              if (this.results.summary.high_issues > 0) {
+                report += '### High Priority Optimizations:\n';
+                report += '1. Add canonical URLs to all pages\n';
+                report += '2. Add alt attributes to all images\n';
+                report += '3. Optimize title and meta description lengths\n';
+                report += '4. Ensure unique meta descriptions for each page\n\n';
+              }
+              
+              if (this.results.summary.medium_issues > 0) {
+                report += '### Medium Priority Enhancements:\n';
+                report += '1. Add Open Graph tags for better social media sharing\n';
+                report += '2. Implement Schema.org structured data\n';
+                report += '3. Review and fix multiple H1 tags on pages\n';
+                report += '4. Optimize content length (aim for 300+ words on key pages)\n\n';
+              }
+              
+              report += '## 📄 Page Details\n\n';
+              
+              this.results.pages.forEach(page => {
+                const totalIssues = 
+                  page.issues.critical.length +
+                  page.issues.high.length +
+                  page.issues.medium.length +
+                  page.issues.low.length;
+                
+                report += `### ${page.file}\n\n`;
+                report += `- **URL:** ${page.url}\n`;
+                report += `- **Title:** ${page.metadata.title || 'Missing'}\n`;
+                report += `- **Meta Description:** ${page.metadata.description ? page.metadata.description.substring(0, 100) + '...' : 'Missing'}\n`;
+                report += `- **Word Count:** ${page.metadata.word_count}\n`;
+                report += `- **H1 Tags:** ${page.metadata.h1_count}\n`;
+                report += `- **Issues:** ${totalIssues}\n\n`;
+              });
+              
+              // Write report
+              fs.writeFileSync(OUTPUT_FILE, report);
+              console.log(`\n📝 Report generated: ${OUTPUT_FILE}`);
+            }
+          }
+          
+          // Run crawler
+          (async () => {
+            try {
+              const crawler = new SEOCrawler();
+              await crawler.crawl();
+            } catch (error) {
+              console.error('Error running SEO crawler:', error);
+              process.exit(1);
+            }
+          })();
+          EOF
+          
+      - name: Install Node dependencies for crawler
+        run: |
+          npm init -y
+          npm install jsdom
+          
+      - name: Run SEO Crawler
+        run: |
+          node seo-crawler.js
+          
+      - name: Run Lighthouse CI
+        run: |
+          mkdir -p .lighthouseci
+          cat > .lighthouseci/lighthouserc.json << 'EOF'
+          {
+            "ci": {
+              "collect": {
+                "staticDistDir": "./_site",
+                "numberOfRuns": 1,
+                "settings": {
+                  "preset": "desktop",
+                  "onlyCategories": ["performance", "accessibility", "best-practices", "seo"]
+                }
+              },
+              "assert": {
+                "assertions": {
+                  "categories:seo": ["error", {"minScore": 0.8}],
+                  "categories:accessibility": ["warn", {"minScore": 0.8}],
+                  "categories:performance": ["warn", {"minScore": 0.7}],
+                  "categories:best-practices": ["warn", {"minScore": 0.8}]
+                }
+              },
+              "upload": {
+                "target": "temporary-public-storage"
+              }
+            }
+          }
+          EOF
+          lhci autorun || true
+          
+      - name: Check for broken links
+        run: |
+          echo "Checking for broken internal links..."
+          blc http://localhost:8080 --recursive --ordered --exclude-external --filter-level 3 > broken-links.txt || true
+          
+      - name: Generate Final Report
+        run: |
+          cat >> seo-report.md << 'EOF'
+          
+          ---
+          
+          ## 🔗 Link Check
+          
+          EOF
+          
+          if [ -s broken-links.txt ]; then
+            echo "Broken links found. See broken-links.txt for details." >> seo-report.md
+            cat broken-links.txt >> seo-report.md
+          else
+            echo "✅ No broken internal links found." >> seo-report.md
+          fi
+          
+          cat >> seo-report.md << 'EOF'
+          
+          ---
+          
+          ## 📊 Lighthouse Scores
+          
+          See Lighthouse HTML report in artifacts for detailed performance, accessibility, and SEO metrics.
+          
+          ---
+          
+          ## 🎯 Key SEO Best Practices
+          
+          ### Title Tags
+          - Should be 50-60 characters
+          - Should be unique for each page
+          - Should include primary keyword
+          - Should be compelling for click-through
+          
+          ### Meta Descriptions
+          - Should be 150-160 characters
+          - Should be unique for each page
+          - Should include target keywords naturally
+          - Should include a call-to-action
+          
+          ### Headings
+          - One H1 per page
+          - Sequential hierarchy (H1 -> H2 -> H3)
+          - Include keywords naturally
+          - Descriptive and meaningful
+          
+          ### Images
+          - All images should have alt text
+          - Alt text should be descriptive
+          - File names should be descriptive
+          - Optimize file sizes for web
+          
+          ### Structured Data
+          - Add Schema.org markup for local business
+          - Add RVPark schema type
+          - Include business information
+          - Add review/rating markup if applicable
+          
+          ### Internal Linking
+          - Link to important pages from homepage
+          - Use descriptive anchor text
+          - Create content silos/hubs
+          - Ensure all pages are accessible
+          
+          ### Content Quality
+          - Aim for 300+ words on key pages
+          - Use natural keyword integration
+          - Provide valuable, unique content
+          - Update content regularly
+          
+          ---
+          
+          **Next Steps:**
+          1. Review and address critical issues first
+          2. Optimize high-priority items
+          3. Implement structured data
+          4. Monitor rankings and traffic
+          5. Run this audit regularly after changes
+          
+          EOF
+          
+      - name: Upload SEO Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-audit-report
+          path: |
+            seo-report.md
+            .lighthouseci/**/lhr-*.html
+            .lighthouseci/**/lhr-*.json
+            
+      - name: Comment PR with SEO Report
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            // Read the SEO report
+            let report = fs.readFileSync('seo-report.md', 'utf8');
+            
+            // Truncate if too long (GitHub comment limit is ~65,536 characters)
+            if (report.length > 60000) {
+              report = report.substring(0, 60000) + '\n\n... (report truncated, see artifacts for full report)';
+            }
+            
+            // Post comment
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## 🔍 SEO Audit Results\n\n${report}\n\n---\n📥 **Download full report and Lighthouse results from the workflow artifacts.**`
+            });
+            
+      - name: Display Summary
+        run: |
+          echo "======================================"
+          echo "SEO Audit Complete!"
+          echo "======================================"
+          cat seo-report.md | head -50
+          echo ""
+          echo "Full report available in artifacts"
+          echo "======================================"
