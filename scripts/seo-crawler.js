@@ -205,7 +205,8 @@ class SEOCrawler {
   
   getMetaDescription(document) {
     const meta = document.querySelector('meta[name="description"]');
-    return meta ? meta.getAttribute('content').trim() : null;
+    const content = meta ? meta.getAttribute('content') : null;
+    return content ? content.trim() : null;
   }
   
   getCanonical(document) {
@@ -519,20 +520,23 @@ class SEOCrawler {
     const robots = document.querySelector('meta[name="robots"]');
     
     if (robots) {
-      const content = robots.getAttribute('content').toLowerCase();
-      
-      if (content.includes('noindex')) {
-        analysis.issues.critical.push({
-          rule: 'noindex_meta',
-          message: 'Page has "noindex" in robots meta tag - it will not be indexed by search engines!'
-        });
-      }
-      
-      if (content.includes('nofollow')) {
-        analysis.issues.high.push({
-          rule: 'nofollow_meta',
-          message: 'Page has "nofollow" in robots meta tag - search engines won\'t follow links on this page.'
-        });
+      const content = robots.getAttribute('content');
+      if (content) {
+        const contentLower = content.toLowerCase();
+        
+        if (contentLower.includes('noindex')) {
+          analysis.issues.critical.push({
+            rule: 'noindex_meta',
+            message: 'Page has "noindex" in robots meta tag - it will not be indexed by search engines!'
+          });
+        }
+        
+        if (contentLower.includes('nofollow')) {
+          analysis.issues.high.push({
+            rule: 'nofollow_meta',
+            message: 'Page has "nofollow" in robots meta tag - search engines won\'t follow links on this page.'
+          });
+        }
       }
     }
   }
