@@ -1,0 +1,25 @@
+{
+  "name": "camppointe-seo-audit",
+  "version": "1.0.0",
+  "description": "SEO crawler and audit tool for CampPointe website",
+  "main": "scripts/seo-crawler.js",
+  "scripts": {
+    "seo:audit": "node scripts/seo-crawler.js _site",
+    "seo:build-and-audit": "bundle exec jekyll build && node scripts/seo-crawler.js _site"
+  },
+  "keywords": [
+    "seo",
+    "audit",
+    "crawler",
+    "jekyll"
+  ],
+  "author": "CampPointe",
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "^23.0.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

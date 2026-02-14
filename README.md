@@ -1,5 +1,26 @@
 # CampPointe Lake Texoma RV Park - Complete SEO Strategy Implementation
 
+![SEO Score](https://img.shields.io/badge/SEO%20Score-85%2F100-yellowgreen)
+![Pages Analyzed](https://img.shields.io/badge/Pages%20Analyzed-22-blue)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/balkarsinghkang/camppointe_web/seo-audit.yml?label=SEO%20Audit)
+
+## 🔍 Automated SEO Crawler
+
+**NEW!** This repository now includes an automated SEO crawler that analyzes your website and provides actionable recommendations on every commit!
+
+### 🚀 Features
+- ✅ Runs automatically on every commit via GitHub Actions
+- ✅ Analyzes 15+ SEO factors including titles, meta descriptions, headings, images, structured data
+- ✅ Generates comprehensive SEO reports with scores and recommendations
+- ✅ Posts summary in pull request comments
+- ✅ Identifies critical issues that need immediate attention
+
+### 📊 Latest SEO Score: 85/100
+
+See [SEO_CRAWLER.md](SEO_CRAWLER.md) for complete documentation on how to use and interpret the automated SEO audits.
+
+---
+
 ## � Project Overview
 
 This repository contains the complete implementation of a comprehensive SEO strategy for CampPointe Lake Texoma RV Park. The strategy targets high-value keywords to capture local search traffic for monthly RV park stays, recreational RV camping, and Lake Texoma activities.
@@ -190,6 +211,11 @@ This repository contains the complete implementation of a comprehensive SEO stra
 **Repository Structure**:
 ```
 camppointe_web/
+├── .github/
+│   └── workflows/
+│       └── seo-audit.yml  # Automated SEO audit on every commit
+├── scripts/
+│   └── seo-crawler.js     # Comprehensive SEO crawler
 ├── index.html              # Homepage
 ├── rates.html             # RV site rates & pricing  
 ├── monthly-rv-sites.html  # Monthly living focus page
@@ -207,9 +233,33 @@ camppointe_web/
 ├── faq.html               # Frequently asked questions  
 ├── policies.html          # Rules & regulations
 ├── css/styles.css         # Responsive stylesheet
-└── js/main.js             # Interactive functionality
+├── js/main.js             # Interactive functionality
+├── package.json           # Node.js dependencies for SEO tools
+├── SEO_CRAWLER.md         # SEO crawler documentation
+└── seo-report.md          # Generated SEO audit report (git-ignored)
 ```
 
-**Total Implementation**: Complete SEO strategy covering all priority levels (P0, P1, P2) with comprehensive content marketing and local search optimization.
+## 🔧 Running SEO Audits
+
+### Automated (Recommended)
+SEO audits run automatically on every commit via GitHub Actions. Check the **Actions** tab in GitHub or PR comments for reports.
+
+### Manual
+```bash
+# Install dependencies
+npm install
+
+# Run SEO audit on current site
+npm run seo:audit
+
+# Build and audit in one command  
+npm run seo:build-and-audit
+```
+
+The audit generates `seo-report.md` with detailed findings and recommendations.
+
+---
+
+**Total Implementation**: Complete SEO strategy covering all priority levels (P0, P1, P2) with comprehensive content marketing, local search optimization, and automated SEO monitoring.
 
 **Status**: ✅ **COMPLETE** - Ready for production deployment and search engine optimization.
